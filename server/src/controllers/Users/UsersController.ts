@@ -1,5 +1,7 @@
 import { Response, Request } from 'express';
-import { query } from '../../database';
+import { GET_ALL_USERS_QUERY, query } from '../../database';
+import { DELETE_USER_BY_ID, GET_USER_BY_ID } from '../../database/queries';
+import { toNumber, toObject } from '../../helpers';
 
 interface IUser {
     id: number;
@@ -13,17 +15,13 @@ const users: IUser[] = [
     { id: 3, name: 'Danya', isOnline: true },
 ];
 
-const toNumber = (i: string) => Number(i.split(':')[1]);
-
-
 class UsersController {
     async getUsers(req: Request, res: Response) {
         try {
-            
-            query(`SELECT * FROM users`, []).then((result)=>{
+            query(GET_ALL_USERS_QUERY, []).then((result) => {
                 res.send(result);
                 res.status(200);
-            })
+            });
         } catch (error) {
             res.status(500).json(error);
         }
@@ -32,12 +30,17 @@ class UsersController {
     async getUserById(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const user = users.find((user) => user.id === toNumber(id));
-            if (!user) {
-                throw new Error('This user is undefined');
-            }
-            res.send(user);
-            res.status(200);
+            query(GET_USER_BY_ID, [toNumber(id)]).then((result) => {
+                try {
+                    if (!toObject(result)[0]) {
+                        throw Error('This user undefined');
+                    }
+                    res.send(result);
+                    res.status(200);
+                } catch (error) {
+                    res.status(500).json(error);
+                }
+            });
         } catch (error) {
             res.status(500).json(error);
         }
@@ -46,14 +49,17 @@ class UsersController {
     async deleteUserById(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const index = users.findIndex((user) => user.id === toNumber(id));
-            console.log(index);
-            if (index === -1) {
-                throw new Error('This user is undefined');
-            }
-            users.splice(index, 1);
-            res.send(`User with ${id} was deleted`);
-            res.status(200);
+            query(DELETE_USER_BY_ID, [toNumber(id)]).then((result) => {
+                try {
+                    if (!toObject(result)[1]) {
+                        throw Error("User not found")
+                    }
+                    res.send(`User with ${id} was deleted`);
+                    res.status(200);
+                } catch (error) {
+                    res.status(500).json(error);
+                }
+            });
         } catch (error) {
             res.status(500).json(error);
         }
