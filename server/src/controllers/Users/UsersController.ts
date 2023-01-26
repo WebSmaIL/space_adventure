@@ -1,6 +1,6 @@
 import { Response, Request } from 'express';
 import { GET_ALL_USERS_QUERY, query } from '../../database';
-import { DELETE_USER_BY_ID, GET_USER_BY_ID } from '../../database/queries';
+import { DELETE_USER_BY_ID, GET_USER_BY_ID, ADD_USER } from '../../database/queries';
 import { toNumber, toObject } from '../../helpers';
 
 interface IUser {
@@ -67,13 +67,21 @@ class UsersController {
 
     async addUser(req: Request, res: Response) {
         try {
-            const { id, name, isOnline } = req.body;
-            if (!id || !name || isOnline === undefined) {
-                throw new Error('You try to add incorrect user');
-            }
-            users.push({ id, name, isOnline });
-            res.send(`User with ${id}, ${name}, ${isOnline} was added`);
-            res.status(200);
+
+            const { id, name, login, password, email } = req.body;
+            console.log(typeof id, typeof name, typeof login, typeof password, typeof email);
+            console.log('1231231231231231231231231231231233123');
+            query(ADD_USER, [id, name, login, password, email]).then((result)=>{
+                try {
+                    if (!result) {
+                        throw Error('You try to add incorrect user');
+                    }
+                    res.send(`User was added`);
+                    res.status(200);
+                } catch (error) {
+                    res.status(500).json(error);
+                }
+            })
         } catch (error) {
             res.status(500).json(error);
         }

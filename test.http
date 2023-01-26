@@ -1,2 +1,10 @@
-DELETE  http://localhost:8000/api/users/:1
+POST   http://localhost:8000/api/users/
 Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "sanya",
+    "login": "krutoi",
+    "password": "123123",
+    "email": "email.ru"
+}
