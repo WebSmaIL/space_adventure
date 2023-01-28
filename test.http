@@ -1,10 +1,10 @@
-POST   http://localhost:8000/api/users/
+PUT http://localhost:8000/api/users/
 Content-Type: application/json
 
 {
     "id": 1,
-    "name": "sanya",
-    "login": "krutoi",
+    "name": "sanya123",
+    "login": "krutoi123",
     "password": "123123",
     "email": "email.ru"
 }

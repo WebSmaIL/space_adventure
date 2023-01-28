@@ -1,6 +1,6 @@
 import { Response, Request } from 'express';
 import { GET_ALL_USERS_QUERY, query } from '../../database';
-import { DELETE_USER_BY_ID, GET_USER_BY_ID, ADD_USER } from '../../database/queries';
+import { DELETE_USER_BY_ID, GET_USER_BY_ID, ADD_USER, UPDATE_USER_BY_ID } from '../../database/queries';
 import { toNumber, toObject } from '../../helpers';
 
 interface IUser {
@@ -70,7 +70,6 @@ class UsersController {
 
             const { id, name, login, password, email } = req.body;
             console.log(typeof id, typeof name, typeof login, typeof password, typeof email);
-            console.log('1231231231231231231231231231231233123');
             query(ADD_USER, [id, name, login, password, email]).then((result)=>{
                 try {
                     if (!result) {
@@ -89,19 +88,20 @@ class UsersController {
 
     async updateUser(req: Request, res: Response) {
         try {
-            const userOfRequest = req.body;
-            if (!userOfRequest.id || !userOfRequest.name) {
-                throw new Error('Your update incorrectly');
-            }
-
-            const user = users.find((user) => user.id === userOfRequest.id);
-            if (!user) {
-                throw new Error('This user is undefined');
-            }
-
-            user.name = userOfRequest.name;
-            res.send(`User with ${userOfRequest.id} was updated`);
-            res.status(200);
+            const { name, login, password, email, id } = req.body;
+    
+            query(UPDATE_USER_BY_ID, [name, login, password, email, Number(id)]).then((result) => {
+                try {
+    
+                    if (!toObject(result)[6]) {
+                        throw Error('User was not updated');
+                    }
+                    res.send(`User with ${id} was updated`);
+                    res.status(200);
+                } catch (error) {
+                    res.status(500).json(error);
+                }
+            });
         } catch (error) {
             res.status(500).send(error);
         }
