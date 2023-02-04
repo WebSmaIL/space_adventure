@@ -1,2 +1,2 @@
-GET http://localhost:8000/api/venusleaders/id:34534
+GET http://localhost:8000/api/venusleaders/page:23
 Content-Type: application/json

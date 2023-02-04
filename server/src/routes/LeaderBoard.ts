@@ -1,17 +1,27 @@
 import express, { Response, Request } from 'express';
-import { LeaderBoardController } from '../controllers/Users'
+import { LeaderBoardController } from '../controllers/LeaderBoards';
+import { leaders_table_names } from '../database';
 
-const router = express.Router()
+const router = express.Router();
 
-const table_names = ['venus_leaders', 'jupiter_leaders', 'moon_leaders', 'mars_leaders', 'saturn_leaders', 'mercury_leaders', 'neptune_leaders', 'uranus_leaders']
+leaders_table_names.forEach((el) => {
+    const url = '/' + el.split('_').join('');
 
-table_names.forEach((el) => {
-    const url = '/' + el.split("_").join("");
-    router.get(url, (req: Request, res: Response) => LeaderBoardController.getLeaderBoard(req, res, el));
-    router.get(url + '/:id', (req: Request, res: Response) => LeaderBoardController.getUserPresenceById(req, res, el));
-    router.post(url, (req: Request, res: Response) => LeaderBoardController.addUser(req, res, el));
-    router.put(url, (req: Request, res: Response) => LeaderBoardController.updateUser(req, res, el))
-})
+    router.get(url + '/:page', (req: Request, res: Response) =>
+        LeaderBoardController.getLeaderBoard(req, res, el)
+    );
 
+    router.get(url + '/user/:id', (req: Request, res: Response) =>
+        LeaderBoardController.getUserPresenceById(req, res, el)
+    );
 
-export default router
+    router.post(url, (req: Request, res: Response) =>
+        LeaderBoardController.addUser(req, res, el)
+    );
+
+    router.put(url, (req: Request, res: Response) =>
+        LeaderBoardController.updateUser(req, res, el)
+    );
+});
+
+export default router;
