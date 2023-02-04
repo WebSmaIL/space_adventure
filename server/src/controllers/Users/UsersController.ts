@@ -3,18 +3,6 @@ import { GET_ALL_USERS_QUERY, query } from '../../database';
 import { DELETE_USER_BY_ID, GET_USER_BY_ID, ADD_USER, UPDATE_USER_BY_ID } from '../../database/queries';
 import { toNumber, toObject } from '../../helpers';
 
-interface IUser {
-    id: number;
-    name: string;
-    isOnline: boolean;
-}
-
-const users: IUser[] = [
-    { id: 1, name: 'Ivan', isOnline: true },
-    { id: 2, name: 'Sanya', isOnline: false },
-    { id: 3, name: 'Danya', isOnline: true },
-];
-
 class UsersController {
     async getUsers(req: Request, res: Response) {
         try {

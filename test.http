@@ -1,10 +1,2 @@
-PUT http://localhost:8000/api/users/
+GET http://localhost:8000/api/venusleaders/page:23
 Content-Type: application/json
-
-{
-    "id": 1,
-    "name": "sanya123",
-    "login": "krutoi123",
-    "password": "123123",
-    "email": "email.ru"
-}
