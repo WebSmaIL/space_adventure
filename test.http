@@ -1,2 +1,10 @@
-GET http://localhost:8000/api/venusleaders/page:23
+POST  http://localhost:8000/api/users/
 Content-Type: application/json
+
+{
+    "id":123,
+    "name":"eblan",
+    "login":"krutoi",
+    "password":"123321",
+    "email":"sukaemail.ru"
+}

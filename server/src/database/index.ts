@@ -9,5 +9,9 @@ export {
     DELETE_USER_BY_ID,
     GET_USER_BY_ID,
     UPDATE_USER_BY_ID,
+    PLANET_INFO,
+    PLANET_INFO_BY_ID,
+    SPACE_SHIPS,
+    SPACE_SHIPS_BY_ID,
 } from './queries';
 export { leaders_table_names } from './tableNames';

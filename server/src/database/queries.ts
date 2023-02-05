@@ -7,3 +7,7 @@ export const GET_LEADERS = (tableName: string, startNumber: number, limitNumber:
 export const GET_USER_PRESENCE_BY_ID = (tableName: string) => `SELECT * FROM ${tableName} WHERE user_id=?`;
 export const ADD_LEADER = (tableName: string) => `INSERT INTO ${tableName} (user_id, score) VALUES (?, ?)`;
 export const UPDATE_LEADER= (tableName: string) => `UPDATE ${tableName} SET score=? WHERE user_id=?`;
+export const PLANET_INFO = `SELECT * FROM planets`;
+export const PLANET_INFO_BY_ID = `SELECT * FROM planets WHERE id=?`;
+export const SPACE_SHIPS = `SELECT * FROM spaceships`;
+export const SPACE_SHIPS_BY_ID = `SELECT * FROM spaceships WHERE id=?`;
