@@ -6,6 +6,7 @@
 /server/dist
 /.pnp
 .pnp.js
+/.http
 
 # testing
 /coverage
