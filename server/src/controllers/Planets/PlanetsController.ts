@@ -1,10 +1,10 @@
 import { Response, Request } from 'express';
-import { query, PLANET_INFO, PLANET_INFO_BY_ID } from '../../database';
+import { query, GET_ALL, GET_BY_ID } from '../../database';
 
 class PlanetsController {
-    async getPlanets(req: Request, res: Response) {
+    async getPlanets(req: Request, res: Response, tableName: string) {
         try {
-            query(PLANET_INFO, []).then((result) => {
+            query(GET_ALL(tableName), []).then((result) => {
                 res.send(result);
                 res.status(200);
             });
@@ -13,12 +13,12 @@ class PlanetsController {
         }
     }
 
-    async getPlanetById(req: Request, res: Response) {
+    async getPlanetById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
             if (!id.split(':')[1]) throw Error();
 
-            query(PLANET_INFO_BY_ID, [id.split(':')[1]]).then((result) => {
+            query(GET_BY_ID(tableName), [id.split(':')[1]]).then((result) => {
                 res.send(result).status(200);
             });
         } catch (error) {

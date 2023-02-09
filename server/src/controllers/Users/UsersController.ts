@@ -1,17 +1,18 @@
 import { Response, Request } from 'express';
-import { GET_ALL_USERS_QUERY, query } from '../../database';
+import { query } from '../../database';
 import {
     DELETE_USER_BY_ID,
-    GET_USER_BY_ID,
+    GET_ALL,
+    GET_BY_ID,
     ADD_USER,
     UPDATE_USER_BY_ID,
 } from '../../database/queries';
 import { toNumber, toObject } from '../../helpers';
 
 class UsersController {
-    async getUsers(req: Request, res: Response) {
+    async getUsers(req: Request, res: Response, tableName: string) {
         try {
-            query(GET_ALL_USERS_QUERY, []).then((result) => {
+            query(GET_ALL(tableName), []).then((result) => {
                 res.send(result);
                 res.status(200);
             });
@@ -20,11 +21,11 @@ class UsersController {
         }
     }
 
-    async getUserById(req: Request, res: Response) {
+    async getUserById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
             if (!id.split(':')[1]) throw Error();
-            query(GET_USER_BY_ID, [id.split(':')[1]]).then((result) => {
+            query(GET_BY_ID(tableName), [id.split(':')[1]]).then((result) => {
                 try {
                     res.send(result).status(200);
                 } catch (error) {
@@ -36,7 +37,7 @@ class UsersController {
         }
     }
 
-    async deleteUserById(req: Request, res: Response) {
+    async deleteUserById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
             if (!id.split(':')[1]) throw Error();
@@ -56,7 +57,7 @@ class UsersController {
         }
     }
 
-    async addUser(req: Request, res: Response) {
+    async addUser(req: Request, res: Response, tableName: string) {
         try {
             const { id, name, login, password, email } = req.body;
             query(ADD_USER, [id, name, login, password, email])
@@ -71,7 +72,7 @@ class UsersController {
         }
     }
 
-    async updateUser(req: Request, res: Response) {
+    async updateUser(req: Request, res: Response, tableName: string) {
         try {
             const { name, login, password, email, id } = req.body;
 

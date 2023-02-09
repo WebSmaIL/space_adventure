@@ -1,10 +1,10 @@
 import express, { Response, Request } from 'express';
 import { LeaderBoardController } from '../controllers/LeaderBoards';
-import { leaders_table_names } from '../database';
+import { table_names } from '../database';
 
 const router = express.Router();
 
-leaders_table_names.forEach((el) => {
+table_names.forEach((el) => {
     const url = '/' + el.split('_').join('');
 
     router.get(url + '/:page', (req: Request, res: Response) =>
