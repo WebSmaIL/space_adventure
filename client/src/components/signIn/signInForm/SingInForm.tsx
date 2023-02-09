@@ -55,11 +55,11 @@ const SignInForm = () => {
 
                 <Button text="Войти" />
             </Form>
-            <AuthorizationLink
+            {/* <AuthorizationLink
                 linkText={'Регистрация'}
                 path={'/register'}
                 text={'Нет аккаунта?'}
-            />
+            /> */}
         </>
     );
 };

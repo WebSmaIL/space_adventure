@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { cupOne, cupTwo, cupThree } from '../../../../assets/img/svg';
+import { cupOne, cupTwo, cupThree } from '../../../../assets/img/svgIcons';
 import { IUserLeaders, UserLeaders } from './mookData';
 const UsersLeaders = () => {
     let count = 1;

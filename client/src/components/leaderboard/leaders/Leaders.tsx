@@ -12,7 +12,7 @@ import {
     mercury,
     venus,
     pluto,
-} from '../../../assets/img/svg';
+} from '../../../assets/img/svgIcons';
 import UsersLeaders from './usersLeaders/UsersLeaders';
 
 const Leaders = () => {
