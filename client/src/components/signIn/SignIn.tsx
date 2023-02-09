@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import SignInForm from './signInForm/SingInForm';
-import logo from '../../assets/img/png/Logo.png';
+import { logo } from '../../assets/img/svgIcons';
 import SignUpForm from './signUpForm/SignUpForm';
+import Background from '../../assets/uikit/Background';
+import {background_authorize} from '../../assets/img/backgrounds'
 
 interface IProps {
     titleText: string;
@@ -11,17 +13,20 @@ interface IProps {
 
 const SignIn = ({ titleText, isRegister }: IProps) => {
     return (
-        <Container>
-            <Content>
-                <Title>{titleText}</Title>
+        <>
+            <Container>
+                <Content>
+                    <Title>{titleText}</Title>
 
-                <Logo>
-                    <img src={logo} alt="" />
-                </Logo>
+                    <Logo>
+                        <img src={logo} alt="" />
+                    </Logo>
 
-                {isRegister ? <SignUpForm /> : <SignInForm />}
-            </Content>
-        </Container>
+                    {isRegister ? <SignUpForm /> : <SignInForm />}
+                </Content>
+            </Container>
+            <Background src={background_authorize} alt='' />
+        </>
     );
 };
 

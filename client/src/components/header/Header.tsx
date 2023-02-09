@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { logo, avatar, coinLogo } from '../../assets/img/svg';
+import { logo, avatar, coinLogo } from '../../assets/img/svgIcons';
 
 interface IProps {
     userName: string;
