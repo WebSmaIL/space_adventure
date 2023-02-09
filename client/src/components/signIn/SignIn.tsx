@@ -5,12 +5,11 @@ import logo from '../../assets/img/png/Logo.png';
 import SignUpForm from './signUpForm/SignUpForm';
 
 interface IProps {
-  titleText: string
-  isRegister: boolean
+    titleText: string;
+    isRegister: boolean;
 }
 
-const SignIn = ({titleText, isRegister}: IProps) => {
-
+const SignIn = ({ titleText, isRegister }: IProps) => {
     return (
         <Container>
             <Content>
@@ -20,7 +19,7 @@ const SignIn = ({titleText, isRegister}: IProps) => {
                     <img src={logo} alt="" />
                 </Logo>
 
-                {isRegister ? <SignUpForm /> : <SignInForm />}                
+                {isRegister ? <SignUpForm /> : <SignInForm />}
             </Content>
         </Container>
     );

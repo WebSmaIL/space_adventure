@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import Input from '../../../assets/uikit/Input';
 import Button from '../../../assets/uikit/Button';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword } from '../../../validate/Validate';
+import AuthorizationLink from '../linkContainer/AuthorizationLink';
+import { Form } from '../formStyles/formStyles';
+
 interface IFormInputs {
     Email: string;
     Password: string;
@@ -54,38 +55,13 @@ const SignInForm = () => {
 
                 <Button text="Войти" />
             </Form>
-            <LinkContainer>
-                <StyledSpan>Нет аккаунта?</StyledSpan>
-                <StyledLink to="/register">Регистрация</StyledLink>
-            </LinkContainer>
+            <AuthorizationLink
+                linkText={'Регистрация'}
+                path={'/register'}
+                text={'Нет аккаунта?'}
+            />
         </>
     );
 };
 
 export default SignInForm;
-
-const Form = styled.form`
-    width: 100%;
-    max-width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const LinkContainer = styled.div`
-    display: block;
-    margin-top: 50px;
-
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 33px;
-`;
-
-const StyledSpan = styled.span`
-    color: rgba(255, 255, 255, 0.6);
-`;
-
-const StyledLink = styled(Link)`
-    margin-left: 20px;
-    color: rgba(142, 131, 255, 1);
-`;

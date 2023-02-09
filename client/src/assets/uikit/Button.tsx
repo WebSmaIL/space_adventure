@@ -12,7 +12,6 @@ const Button = ({ text }: IProps) => {
 export default Button;
 
 const StyledButton = styled.button`
-
     width: 300px;
 
     display: inline-block;
@@ -22,7 +21,7 @@ const StyledButton = styled.button`
     font-family: inherit;
     font-size: 40px;
     line-height: 1.1;
-    color: #CEB7FF;
+    color: #ceb7ff;
     font-weight: 500;
     text-decoration: none;
 
@@ -32,8 +31,8 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    
-    transition: all .3s ease;
+
+    transition: all 0.3s ease;
 
     &::before {
         content: '';
@@ -44,21 +43,26 @@ const StyledButton = styled.button`
         bottom: 0;
         border-radius: 50px;
         border: 5px solid transparent;
-        background: linear-gradient(180deg, rgba(206, 183, 255, 1), rgba(115, 102, 255, 0.5)) border-box;
+        background: linear-gradient(
+                180deg,
+                rgba(206, 183, 255, 1),
+                rgba(115, 102, 255, 0.5)
+            )
+            border-box;
         mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
         -webkit-mask-composite: destination-out;
         mask-composite: exclude;
 
-        transition: all .3s ease;
+        transition: all 0.3s ease;
     }
 
     &:focus,
-    &:hover  {
-      outline: none;
-      box-shadow: 5px 5px 10px rgba(115, 102, 255, 0.5);
+    &:hover {
+        outline: none;
+        box-shadow: 5px 5px 10px rgba(115, 102, 255, 0.5);
 
-      &::before {
-        transform: scale(1.05);
-       }
+        &::before {
+            transform: scale(1.05);
+        }
     }
 `;
