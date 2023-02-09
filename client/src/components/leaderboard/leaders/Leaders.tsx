@@ -45,31 +45,31 @@ export default Leaders;
 
 const Div = styled.div`
     position: relative;
-    width: 1250px;
-    height: 1800px;
+    width: 100%;
+    max-width: 1250px;
     left: 18%;
     margin-top: 100px;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
-    padding-top: 280px;
+    padding: 40px;
     border-radius: 60px;
     backdrop-filter: blur(10px);
     border: 5px solid rgba(206, 183, 255, 1);
+    text-align: center;
 `;
 
 const Span = styled.span`
-    position: absolute;
-    top: 30px;
+    display: inline-block;
+    margin: 0 auto;
     font-size: 40px;
     font-weight: 700;
-    margin-left: 40px;
     padding-bottom: 10px;
     color: rgba(142, 131, 255, 1);
 `;
 const PlanetsDiv = styled.div`
-    width: 1100px;
+    width: fit-content;
     font-size: 50px;
-    margin: -100px auto;
+    margin: 0 auto;
+    display: flex;
 `;
 const Hr = styled.hr`
     width: 100%;

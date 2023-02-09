@@ -18,7 +18,6 @@ const Leaderboard = () => {
 export default Leaderboard;
 
 const Container = styled.div`
-    background-color: #080808;
     position: relative;
     width: 100%;
 `;

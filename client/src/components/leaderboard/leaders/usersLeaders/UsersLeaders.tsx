@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { cupOne, cupTwo, cupThree } from '../../../../assets/img/svgIcons';
 import { IUserLeaders, UserLeaders } from './mookData';
+import Button from '../../../../assets/uikit/Button';
 const UsersLeaders = () => {
     let count = 1;
     return (
-        <Div>
-            <Ol>
+        <>
+            <Div>
                 <div>
                     {UserLeaders.map((e: IUserLeaders) => {
                         let Component;
@@ -97,9 +98,9 @@ const UsersLeaders = () => {
                         return Component;
                     })}
                 </div>
-            </Ol>
-            <Button>Ещё...</Button>
-        </Div>
+            </Div>
+            <Button text="Еще..." />
+        </>
     );
 };
 
@@ -110,87 +111,62 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
 
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
 
-    margin: 150px auto;
+    margin: 40px auto;
 
     border-radius: 60px;
     font-size: 40px;
     line-height: 60px;
 `;
 
-const Ol = styled.div`
-    text-align: center;
-`;
-
-const Button = styled.button`
-    position: absolute;
-    width: 300px;
-    height: 70px;
-    background: transparent;
-    border-radius: 40px;
-    border: 1px solid rgba(206, 183, 255, 1);
-    color: rgba(206, 183, 255, 1);
-    font-size: 40px;
-    box-shadow: 0 2px 5px #8a53ff, 0 -2px 5px #8a53ff;
-    bottom: -100px;
-    transition: all 500ms ease;
-    &:hover {
-        cursor: pointer;
-        transform: scale(1.1);
-        background: #8953ff3d;
-        color: #fff;
-        border: none;
-    }
-`;
-
 const ButtonUser = styled.button<{ outline: string }>`
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 550px;
     height: 100px;
     border-radius: 100px;
     background: #262626;
     outline: ${(props) => props.outline};
     outline-offset: -8px;
-
     margin-bottom: 50px;
+    padding-left: 25px;
 `;
+
 const CubOne = styled.img`
-    position: absolute;
+    position: relative;
     width: 70px;
     height: 70px;
     z-index: 50;
-    top: 13px;
-    left: 20px;
 `;
 
 const RatingUser = styled.div<{ outline: string }>`
-    position: absolute;
     background: #343434;
     width: 150px;
     height: 84px;
     border-radius: 100px;
     outline: ${(props) => props.outline};
-    right: 6px;
-    top: 6px;
     font-size: 40px;
     color: rgba(255, 255, 255, 1);
     text-align: center;
     font-weight: 700;
     line-height: 200%;
+    position: relative;
+    z-index: 51;
 `;
 const UserName = styled.span`
-    position: absolute;
+    display: block;
     font-size: 40px;
     color: #fff;
-    left: 120px;
-    top: 25px;
 `;
 const PlaceNext = styled.span`
-    position: absolute;
+    position: relative;
+    display: block;
     font-size: 40px;
     color: #757575;
-    align-items: center;
     text-align: center;
     line-height: 180%;
     width: 70px;
@@ -198,6 +174,4 @@ const PlaceNext = styled.span`
     background: #343434;
     border-radius: 50%;
     z-index: 50;
-    top: 12px;
-    left: 20px;
 `;
