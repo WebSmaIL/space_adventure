@@ -5,7 +5,9 @@ import {
     GET_ALL,
     GET_BY_ID,
     ADD_USER,
-    UPDATE_USER_BY_ID,
+    UPDATE_USER_LOGIN_PASS,
+    UPDATE_USER_BALANCE,
+    UPDATE_USER_EMAIL,
 } from '../../database/queries';
 import { toNumber, toObject } from '../../helpers';
 
@@ -72,13 +74,47 @@ class UsersController {
         }
     }
 
-    async updateUser(req: Request, res: Response, tableName: string) {
+    async updateUserLoginPass(req: Request, res: Response, tableName: string) {
         try {
-            const { name, login, password, email, id } = req.body;
+            const { login, password, id } = req.body;
 
-            query(UPDATE_USER_BY_ID, [name, login, password, email, Number(id)])
+            query(UPDATE_USER_LOGIN_PASS, [login, password, id])
                 .then((result) => {
-                    res.status(200).json({ message: 'User was updated' });
+                    res.status(200).json({
+                        message: 'User login and password was updated',
+                    });
+                })
+                .catch((error) =>
+                    res.status(500).json({ message: 'User already exists' })
+                );
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
+    async updateUserBalance(req: Request, res: Response, tableName: string) {
+        try {
+            const { balance, id } = req.body;
+            query(UPDATE_USER_BALANCE, [balance, id])
+                .then((result) => {
+                    res.status(200).json({
+                        message: 'User balance was updated',
+                    });
+                })
+                .catch((error) =>
+                    res.status(500).json({ message: 'User already exists' })
+                );
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
+    async updateUserEmail(req: Request, res: Response, tableName: string) {
+        try {
+            const { email, id } = req.body;
+            query(UPDATE_USER_EMAIL, [email, id])
+                .then((result) => {
+                    res.status(200).json({ message: 'User email was updated' });
                 })
                 .catch((error) =>
                     res.status(500).json({ message: 'User already exists' })

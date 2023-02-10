@@ -1,9 +1,8 @@
 import express, { Response, Request } from 'express';
-import { UsersController } from '../controllers/Users'
+import { UsersController } from '../controllers/Users';
 import { table_names } from '../database';
 
-const router = express.Router()
-
+const router = express.Router();
 
 table_names.forEach((el) => {
     const url = '/' + el.split('_').join('');
@@ -24,8 +23,16 @@ table_names.forEach((el) => {
         UsersController.deleteUserById(req, res, el)
     );
 
-    router.put(url, (req: Request, res: Response) =>
-        UsersController.updateUser(req, res, el)
+    router.put(url + '/update_login_pass', (req: Request, res: Response) =>
+        UsersController.updateUserLoginPass(req, res, el)
+    );
+
+    router.put(url + '/update_balance', (req: Request, res: Response) =>
+        UsersController.updateUserBalance(req, res, el)
+    );
+
+    router.put(url + '/update_email', (req: Request, res: Response) =>
+        UsersController.updateUserEmail(req, res, el)
     );
 });
 

@@ -6,7 +6,9 @@ export {
     UPDATE_LEADER,
     ADD_USER,
     DELETE_USER_BY_ID,
-    UPDATE_USER_BY_ID,
+    UPDATE_USER_LOGIN_PASS,
+    UPDATE_USER_BALANCE,
+    UPDATE_USER_EMAIL,
     GET_ALL,
     GET_BY_ID,
 } from './queries';
