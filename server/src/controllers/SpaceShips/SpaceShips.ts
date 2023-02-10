@@ -1,10 +1,10 @@
 import { Response, Request } from 'express';
-import { query, SPACE_SHIPS, SPACE_SHIPS_BY_ID } from '../../database';
+import { query, GET_ALL, GET_BY_ID } from '../../database';
 
 class SpaceShipsController {
-    async getSpaceShips(req: Request, res: Response) {
+    async getSpaceShips(req: Request, res: Response, tableName: string) {
         try {
-            query(SPACE_SHIPS, []).then((result) => {
+            query(GET_ALL(tableName), []).then((result) => {
                 res.send(result);
                 res.status(200);
             });
@@ -13,12 +13,12 @@ class SpaceShipsController {
         }
     }
 
-    async getSpaceShipsById(req: Request, res: Response) {
+    async getSpaceShipsById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
             if (!id.split(':')[1]) throw Error();
 
-            query(SPACE_SHIPS_BY_ID, [id.split(':')[1]]).then((result) => {
+            query(GET_BY_ID(tableName), [id.split(':')[1]]).then((result) => {
                 res.send(result).status(200);
             });
         } catch (error) {

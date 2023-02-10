@@ -1,0 +1,7 @@
+PUT http://localhost:8000/api/users/update_email/
+Content-Type: application/json
+
+{
+    "id":123,
+    "email":"sasasasas@malis.serveru"
+}

@@ -2,7 +2,7 @@ import { Response, Request } from 'express';
 import {
     query,
     GET_LEADERS,
-    GET_USER_PRESENCE_BY_ID,
+    GET_BY_ID,
     ADD_LEADER,
     UPDATE_LEADER,
 } from '../../database';
@@ -36,7 +36,7 @@ class LeaderBoardController {
             const { id } = req.params;
             if (!id.split(':')[1]) throw Error();
 
-            query(GET_USER_PRESENCE_BY_ID(tableName), [id.split(':')[1]]).then(
+            query(GET_BY_ID(tableName), [id.split(':')[1]]).then(
                 (result) => {
                     const isPresence = !!toObject(result)[0];
                     res.send({

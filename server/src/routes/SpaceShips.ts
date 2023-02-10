@@ -1,9 +1,19 @@
-import express from 'express';
+import express, { Response, Request } from 'express';
 import { SpaceShips } from '../controllers/SpaceShips';
+import { table_names } from '../database';
+
 const router = express.Router();
 
-router.get('/spaceships', SpaceShips.getSpaceShips);
+table_names.forEach((el) => {
+    const url = '/' + el.split('_').join('');
 
-router.get('/spaceships/:id', SpaceShips.getSpaceShipsById);
+    router.get(url, (req: Request, res: Response) =>
+        SpaceShips.getSpaceShips(req, res, el)
+    );
+
+    router.get(url + '/:id', (req: Request, res: Response) =>
+        SpaceShips.getSpaceShipsById(req, res, el)
+    );
+});
 
 export default router;
