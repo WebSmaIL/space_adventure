@@ -18,9 +18,11 @@ import {
     uranus,
     saturn,
 } from '../../../assets/img/svgIcons';
-import { IPlanet } from './data';
 
-interface IProps extends IPlanet {
+interface IProps {
+    id: number;
+    name: string;
+    level: number;
     setTitleText: React.Dispatch<React.SetStateAction<string>>;
     setCurrentPlanet: React.Dispatch<React.SetStateAction<string | undefined>>;
     setIsUnlocked: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,9 +33,8 @@ const PlanetSwitch = ({
     setCurrentPlanet,
     setIsUnlocked,
     name,
-    path,
-    sectionColor,
     level,
+    id,
 }: IProps) => {
     const userLevel = 9;
     const planetSwitch = () => {
@@ -41,9 +42,9 @@ const PlanetSwitch = ({
             case 'Mercury':
                 return (
                     <Mercury
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Меркурий');
                             setCurrentPlanet(mercury);
@@ -59,9 +60,9 @@ const PlanetSwitch = ({
             case 'Venus':
                 return (
                     <Venus
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Венера');
                             setCurrentPlanet(venus);
@@ -77,9 +78,9 @@ const PlanetSwitch = ({
             case 'Earth':
                 return (
                     <Earth
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Земля');
                             setCurrentPlanet(earth);
@@ -92,12 +93,12 @@ const PlanetSwitch = ({
                         }}
                     />
                 );
-            case 'Mars':
+            case 'mars':
                 return (
                     <Mars
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Марс');
                             setCurrentPlanet(mars);
@@ -113,9 +114,9 @@ const PlanetSwitch = ({
             case 'Jupiter':
                 return (
                     <Jupiter
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Юпитер');
                             setCurrentPlanet(jupiter);
@@ -131,9 +132,9 @@ const PlanetSwitch = ({
             case 'Saturn':
                 return (
                     <Saturn
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Сатурн');
                             setCurrentPlanet(saturn);
@@ -149,9 +150,9 @@ const PlanetSwitch = ({
             case 'Uranus':
                 return (
                     <Uranus
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Уран');
                             setCurrentPlanet(uranus);
@@ -167,9 +168,9 @@ const PlanetSwitch = ({
             case 'Neptune':
                 return (
                     <Neptune
-                        to={path}
+                        to={'/'}
                         aria-label={`${name} page`}
-                        sectionColor={sectionColor}
+                        sectionColor="#fff"
                         onMouseEnter={() => {
                             setTitleText('Нептун');
                             setCurrentPlanet(neptune);
