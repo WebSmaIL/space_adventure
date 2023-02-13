@@ -16,3 +16,4 @@ export {default as coinLogo} from './coinLogo.svg';
 export {default as cupOne} from './cupOne.svg';
 export {default as cupTwo} from './cupTwo.svg';
 export {default as cupThree} from './cupThree.svg';
+export {default as unknow_planet} from './unknow_planet.svg';

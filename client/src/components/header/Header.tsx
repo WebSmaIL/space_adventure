@@ -13,16 +13,16 @@ const Header = ({ userName, balance }: IProps) => {
             <LogoContainer>
                 <Logo src={logo} />
             </LogoContainer>
-            <div>
-                <div>
+            <FlexContainer>
+                <UserInfoContainer>
                     <Name>{userName}</Name>
-                </div>
-                <ContainerBalance>
-                    <LogoCoin src={coinLogo} alt="" />
-                    <UserBalance>{balance} - coin</UserBalance>
-                </ContainerBalance>
+                    <ContainerBalance>
+                        <LogoCoin src={coinLogo} alt="" />
+                        <UserBalance>{balance} - coin</UserBalance>
+                    </ContainerBalance>
+                </UserInfoContainer>
                 <UserAvatar src={avatar} />
-            </div>
+            </FlexContainer>
         </HeaderMain>
     );
 };
@@ -30,54 +30,63 @@ const Header = ({ userName, balance }: IProps) => {
 export default Header;
 
 const HeaderMain = styled.div`
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(5px);
     width: 100%;
-    height: 100px;
-    background: rgba(143, 143, 143, 0.4);
-    border-bottom-left-radius: 50px;
-    z-index: 10;
+    height: 85px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        z-index: -1;
+        background: linear-gradient(
+            180deg,
+            rgba(206, 183, 255, 1),
+            rgba(115, 102, 255, 0.5)
+        );
+    }
 `;
 
 const UserAvatar = styled.img`
-    margin: 15px 40px 0 10px;
+    margin: 0 40px 0 10px;
     transition: transform 500ms ease;
     &:hover {
         cursor: pointer;
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 `;
 const Name = styled.h3`
-    position: absolute;
     color: rgba(170, 130, 255, 1);
-    font-size: 40px;
+    font-size: 24px;
     margin: 0;
-    right: 7%;
 `;
 const UserBalance = styled.span`
     display: block;
 
     width: max-content;
-    font-size: 28px;
-    
+    font-size: 20px;
+
     color: rgba(170, 130, 255, 1);
-    top: 55px;
 `;
 const LogoCoin = styled.img`
     display: block;
-
-    font-size: 18px;
-    right: 230px;
-    top: 50px;
-    font-weight: 800;
     color: #6522a8;
     background: rgba(170, 130, 255, 1);
-    padding: 0px 10px;
     border-radius: 50%;
     border: 4px solid #6522a8;
     margin-right: 10px;
+    width: 30px;
+    height: 30px;
 `;
 
 const LogoContainer = styled.div`
@@ -89,18 +98,27 @@ const Logo = styled.img`
     width: 100px;
     height: 86px;
     margin-left: 30px;
+    margin-top: 0;
     transition: transform 500ms ease;
-    &:hover{
+    &:hover {
         cursor: pointer;
-        transform:scale(1.2);
+        transform: scale(1.2);
     }
-    
 `;
 
 const ContainerBalance = styled.div`
     display: flex;
-    position: absolute;
-    padding: 5px;
-    bottom: 0;
-    right: 6%;
+    align-items: center;
+`;
+
+const FlexContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const UserInfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 15px;
 `;
