@@ -1,10 +1,12 @@
 import React from 'react';
-import Leaderboard from './components/leaderboard/Leaderboard';
+import SolarSystem from './components/solarSystem/SolarSystem';
+import Header from './components/header/Header';
 
 const App = () => {
     return (
         <div>
-            <Leaderboard />
+            <Header balance={9999} userName='Илья' />
+            <SolarSystem />
         </div>
     );
 };
