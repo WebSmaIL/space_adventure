@@ -6,8 +6,5 @@ export const table_names = [
     'saturn_leaders',
     'mercury_leaders',
     'neptune_leaders',
-    'uranus_leaders',
-    'users',
-    'planets',
-    'spaceships',
+    'uranus_leaders'
 ];

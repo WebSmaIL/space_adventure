@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { UsersSlice, UserInfoSlice } from "./ducks";
+import { UsersSlice, UserInfoSlice, PlanetsSlice } from "./ducks";
 
 const rootReducer = combineReducers({
-    UsersSlice, UserInfoSlice
+    UsersSlice, UserInfoSlice, PlanetsSlice
 });
 
 export const store = configureStore({

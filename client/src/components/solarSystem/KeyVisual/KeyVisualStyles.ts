@@ -1,19 +1,30 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import {Sun as SunSvg, mars, mercury, earth, jupiter, neptune, venus, uranus, saturn} from '../../../assets/img/svgIcons';
-import { NavLink } from 'react-router-dom';
+import {
+    Sun as SunSvg,
+    mars,
+    mercury,
+    earth,
+    jupiter,
+    neptune,
+    venus,
+    uranus,
+    saturn,
+} from '../../../assets/img/svgIcons';
 
 export const Container = styled(motion.div)`
     position: relative;
     min-height: 85vh;
 `;
 
-export const Planet = styled(NavLink)<{sectionColor: string}>`
+export const Planet = styled.a<{ sectionColor: string }>`
     position: absolute;
     top: 50%;
     left: 50%;
     border: 1px solid rgba(146, 186, 226, 0.5);
     border-radius: 50%;
+    background: none;
+    cursor: pointer;
     transform: translate(-50%, -50%);
     transition: all 0.5s ease;
     &::before {
@@ -27,7 +38,8 @@ export const Planet = styled(NavLink)<{sectionColor: string}>`
 
     &:hover {
         border: 1px solid rgba(255, 255, 255, 1);
-        box-shadow: 0 0 5px ${props => props.sectionColor}, inset 0 0 5px ${props => props.sectionColor};
+        box-shadow: 0 0 5px ${(props) => props.sectionColor},
+            inset 0 0 5px ${(props) => props.sectionColor};
     }
     @keyframes orbit {
         0% {
