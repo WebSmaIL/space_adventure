@@ -2,6 +2,7 @@ export interface IPlanet {
     id: number;
     level: number;
     name: string;
+    planet_key: string;
     description: string
     minigame_id: number
     leader_table_name: string

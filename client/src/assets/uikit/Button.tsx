@@ -12,7 +12,7 @@ const Button = ({ text }: IProps) => {
 export default Button;
 
 const StyledButton = styled.button`
-    width: 300px;
+    min-width: 300px;
 
     display: inline-block;
     padding: 20px 40px;

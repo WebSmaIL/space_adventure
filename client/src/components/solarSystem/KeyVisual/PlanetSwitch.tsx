@@ -18,20 +18,24 @@ import {
     uranus,
     saturn,
 } from '../../../assets/img/svgIcons';
+import { IHoveredPlanet } from '../interfaces';
 
 interface IProps {
     id: number;
     name: string;
     level: number;
-    setTitleText: React.Dispatch<React.SetStateAction<string>>;
-    setCurrentPlanet: React.Dispatch<React.SetStateAction<string | undefined>>;
-    setIsUnlocked: React.Dispatch<React.SetStateAction<boolean>>;
+    setHoveredPlanet: React.Dispatch<
+        React.SetStateAction<IHoveredPlanet | undefined>
+    >;
+    setCurrentPlanet: React.Dispatch<React.SetStateAction<{
+        id: number;
+        src: string;
+    } | undefined>>
 }
 
 const PlanetSwitch = ({
-    setTitleText,
+    setHoveredPlanet,
     setCurrentPlanet,
-    setIsUnlocked,
     name,
     level,
     id,
@@ -42,145 +46,145 @@ const PlanetSwitch = ({
             case 'Mercury':
                 return (
                     <Mercury
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Меркурий');
-                            setCurrentPlanet(mercury);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Меркурий',
+                                src: mercury,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: mercury})}
                     />
                 );
             case 'Venus':
                 return (
                     <Venus
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Венера');
-                            setCurrentPlanet(venus);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Венера',
+                                src: venus,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: venus})}
                     />
                 );
             case 'Earth':
                 return (
                     <Earth
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Земля');
-                            setCurrentPlanet(earth);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Земля',
+                                src: earth,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: earth})}
                     />
                 );
-            case 'mars':
+            case 'Mars':
                 return (
                     <Mars
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Марс');
-                            setCurrentPlanet(mars);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Марс',
+                                src: mars,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: mars})}
                     />
                 );
             case 'Jupiter':
                 return (
                     <Jupiter
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Юпитер');
-                            setCurrentPlanet(jupiter);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Юпитер',
+                                src: jupiter,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: jupiter})}
                     />
                 );
             case 'Saturn':
                 return (
                     <Saturn
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Сатурн');
-                            setCurrentPlanet(saturn);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Сатурн',
+                                src: saturn,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: saturn})}
                     />
                 );
             case 'Uranus':
                 return (
                     <Uranus
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Уран');
-                            setCurrentPlanet(uranus);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Уран',
+                                src: uranus,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: uranus})}
                     />
                 );
             case 'Neptune':
                 return (
                     <Neptune
-                        to={'/'}
                         aria-label={`${name} page`}
                         sectionColor="#fff"
                         onMouseEnter={() => {
-                            setTitleText('Нептун');
-                            setCurrentPlanet(neptune);
-                            setIsUnlocked(level <= userLevel);
+                            setHoveredPlanet({
+                                name: 'Нептун',
+                                src: neptune,
+                                isUnlocked: level <= userLevel,
+                            });
                         }}
                         onMouseLeave={() => {
-                            setTitleText('Выберите планету:');
-                            setCurrentPlanet(undefined);
-                            setIsUnlocked(false);
+                            setHoveredPlanet(undefined);
                         }}
+                        onClick={() => setCurrentPlanet({id, src: neptune})}
                     />
                 );
             default:

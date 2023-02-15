@@ -1,18 +1,20 @@
 import { useAppSelector } from '../../../hooks';
 import { getPlanets } from '../../../redux/ducks/planets';
+import { IHoveredPlanet } from '../interfaces';
 import { Container, Sun } from './KeyVisualStyles';
 import PlanetSwitch from './PlanetSwitch';
 
 interface IProps {
-    setTitleText: React.Dispatch<React.SetStateAction<string>>;
-    setCurrentPlanet: React.Dispatch<React.SetStateAction<string | undefined>>;
-    setIsUnlocked: React.Dispatch<React.SetStateAction<boolean>>;
+    setHoveredPlanet: React.Dispatch<React.SetStateAction<IHoveredPlanet | undefined>>
+    setCurrentPlanet: React.Dispatch<React.SetStateAction<{
+        id: number;
+        src: string;
+    } | undefined>>
 }
 
 const KeyVisual = ({
-    setTitleText,
+    setHoveredPlanet,
     setCurrentPlanet,
-    setIsUnlocked,
 }: IProps) => {
     const containerVariants = {
         hidden: {
@@ -46,13 +48,12 @@ const KeyVisual = ({
             <Sun />
             {planets.list.map((planet) => (
                 <PlanetSwitch
-                    name={planet.name}
+                    name={planet.planet_key}
                     id={planet.id}
                     key={planet.id}
-                    setTitleText={setTitleText}
-                    setCurrentPlanet={setCurrentPlanet}
-                    setIsUnlocked={setIsUnlocked}
+                    setHoveredPlanet={setHoveredPlanet}
                     level={planet.level}
+                    setCurrentPlanet={setCurrentPlanet}
                 />
             ))}
         </Container>
