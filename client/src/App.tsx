@@ -3,7 +3,7 @@ import Leaderboard from './components/leaderboard/Leaderboard';
 import { useAppSelector } from './hooks';
 import SolarSystem from './components/solarSystem/SolarSystem';
 import Header from './components/header/Header';
-import Settings from './components/settings_page/settings';
+import Settings from './components/settings/Settings';
 
 const App = () => {
     return (
