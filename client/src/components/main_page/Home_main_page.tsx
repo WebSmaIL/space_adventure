@@ -5,7 +5,7 @@ interface IProps {
     startNaming: string;
 }
 
-const main = () => {
+const Main = () => {
     return (
         <div>
             <div>
@@ -42,7 +42,7 @@ const main = () => {
     );
 };
 
-export default main;
+export default Main;
 
 
 const Signin = styled.h1`
@@ -79,7 +79,8 @@ const Block_type_start = styled.div`
     width: 25%;
     margin-left: 8em;
     display: inline-block;
-    margin-top: 40em
+    margin-top: 40em;
+    font-weight: 700;
 `;
 
 const Block_type_away_right = styled.div`
@@ -94,6 +95,7 @@ const Block_type_away_right = styled.div`
     margin-right: 8em;
     float: right;
     margin-top: -5em;
+    font-weight: 700;
 `;
 
 const Block_type_away_left = styled.div`
@@ -107,11 +109,14 @@ const Block_type_away_left = styled.div`
     margin-left: 8em;
     display: inline-block;
     margin-top: 4em;
+    font-weight: 700;
 `;
 
 const Span = styled.span`
-    color: #ffffff
-`
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 100;
+`;
 
 
 const Footer = styled.h1`
