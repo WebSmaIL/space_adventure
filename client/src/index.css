@@ -83,6 +83,18 @@ body {
     font-weight: 600;
     font-family: 'Bellota';
 }
+
+
+body {
+    background: url(../src/assets/img/settings_background/Background.svg) no-repeat;
+    background-size: cover;
+  
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+  }
+
 /* Указываем box sizing */
 *,
 *::before,
