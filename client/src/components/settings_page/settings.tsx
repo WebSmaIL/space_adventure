@@ -11,16 +11,22 @@ const settings = () => {
         <div>
             <div>
                 <Backgrounds>
-                    <Header_settings_name>Настройки</Header_settings_name>
-                    <Caption>Смена юзернаме</Caption>
-                    <Line></Line>
-                    <Input placeholder='Новое юзернаме'></Input>
-                    <Button>Сменить юзернаме</Button>
+                    <Positoin_login>
+                        <Header_settings_name>Настройки</Header_settings_name>
+                        <Caption>Смена юзернаме</Caption>
+                        <Line></Line>
+                        <Input placeholder='Новое юзернаме'></Input>
+                        <Button>Сменить юзернаме</Button>
+                    </Positoin_login>
 
-                    <Caption>Смена почты</Caption>
-                    <Line></Line>
-                    <Input placeholder='Новая почта'></Input>
-                    <Button>Сменить почту</Button>
+                    <Positoin_login>
+                        <Positoin_mail>
+                            <Caption>Смена почты</Caption>
+                            <Line></Line>
+                            <Input placeholder='Новая почта'></Input>
+                            <Button>Сменить почту</Button>
+                        </Positoin_mail>
+                    </Positoin_login>
 
                     <Caption>Смена пароля</Caption>
                     <Line></Line>
@@ -37,11 +43,20 @@ const settings = () => {
 export default settings;
 
 
+const Positoin_login = styled.div`
+    display: inline-block;
+`;
+
+const Positoin_mail = styled.div`
+    margin-left: 5em;
+`;
+
 const Header_settings_name = styled.h1`
     font-size: 48px;
     color: #CEB7FF;
-    text-align: center;
+    text-align: left;
     margin-top: 1em;
+    margin-left: 1.2em;
 `;
 
 const Backgrounds = styled.div`
@@ -92,6 +107,7 @@ const Input = styled.input`
     margin-top: 2em;
     margin-left: 2em;
     font-family: sans-serif;
+    padding: 1em 0em 1em 0.5em;
 
     ::placeholder{
     color: #786C8F;
@@ -109,6 +125,7 @@ const Button = styled.button`
     margin-top: 1em;
     margin-bottom: 2em;
     margin-left: 2em;
+    padding: 0.3em 0.5em 0.3em 0.5em;
 
     &:hover {
         background: linear-gradient(#CEB7FF 0%, #443F78 100%);
