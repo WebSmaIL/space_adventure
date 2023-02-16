@@ -2,7 +2,7 @@ import { Response, Request } from 'express';
 import {
     query,
     GET_LEADERS,
-    GET_USER_PRESENCE_BY_ID,
+    GET_BY_ID,
     ADD_LEADER,
     UPDATE_LEADER,
 } from '../../database';
@@ -34,9 +34,9 @@ class LeaderBoardController {
     async getUserPresenceById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
-            if (!(id.split(':')[1])) throw Error();
+            if (!id.split(':')[1]) throw Error();
 
-            query(GET_USER_PRESENCE_BY_ID(tableName), [id.split(':')[1]]).then(
+            query(GET_BY_ID(tableName), [id.split(':')[1]]).then(
                 (result) => {
                     const isPresence = !!toObject(result)[0];
                     res.send({
@@ -73,7 +73,7 @@ class LeaderBoardController {
             query(UPDATE_LEADER(tableName), [score, user_id]).then((result) => {
                 try {
                     if (!toObject(result)[6]) throw Error();
-                    
+
                     res.status(200).json({ message: 'User was updated' });
                 } catch (error) {
                     res.status(500).json({ message: 'User is undefined' });

@@ -1,16 +1,39 @@
-import express from 'express'
-import { UsersController } from '../controllers/Users'
-const router = express.Router()
+import express, { Response, Request } from 'express';
+import { UsersController } from '../controllers/Users';
+import { table_names } from '../database';
 
-router.get('/users', UsersController.getUsers)
+const router = express.Router();
 
-router.get('/users/:id', UsersController.getUserById)
+table_names.forEach((el) => {
+    const url = '/' + el.split('_').join('');
 
-router.delete('/users/:id', UsersController.deleteUserById)
+    router.get(url, (req: Request, res: Response) =>
+        UsersController.getUsers(req, res, el)
+    );
 
-router.post('/users/', UsersController.addUser);
+    router.get(url + '/:id', (req: Request, res: Response) =>
+        UsersController.getUserById(req, res, el)
+    );
 
-router.put('/users/', UsersController.updateUser);
+    router.post(url, (req: Request, res: Response) =>
+        UsersController.addUser(req, res, el)
+    );
 
+    router.delete(url + '/:id', (req: Request, res: Response) =>
+        UsersController.deleteUserById(req, res, el)
+    );
 
-export default router
+    router.put(url + '/update_login_pass', (req: Request, res: Response) =>
+        UsersController.updateUserLoginPass(req, res, el)
+    );
+
+    router.put(url + '/update_balance', (req: Request, res: Response) =>
+        UsersController.updateUserBalance(req, res, el)
+    );
+
+    router.put(url + '/update_email', (req: Request, res: Response) =>
+        UsersController.updateUserEmail(req, res, el)
+    );
+});
+
+export default router;
