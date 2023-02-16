@@ -1,26 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { unknow_planet } from '../../../assets/img/svgIcons';
+import { IHoveredPlanet } from '../interfaces';
 
 interface IProps {
-    titleText: string;
-    currentPlanet: string | undefined;
-    isUnlocked: boolean;
+    hoveredPlanet: IHoveredPlanet | undefined;
 }
 
-const Planet = ({ currentPlanet, isUnlocked, titleText }: IProps) => {
+const Planet = ({ hoveredPlanet }: IProps) => {
     return (
         <PlanetContainer>
-            <Title>{titleText}</Title>
-            {currentPlanet ? (
-                <PlanetImg src={currentPlanet} alt="" />
+            <Title>
+                {hoveredPlanet ? hoveredPlanet.name : 'Выберите планету'}
+            </Title>
+            {hoveredPlanet ? (
+                <PlanetImg src={hoveredPlanet.src} alt="" />
             ) : (
                 <UnknowPlanet src={unknow_planet} alt="" />
             )}
             <Title>
                 Статус:{' '}
-                {currentPlanet
-                    ? isUnlocked
+                {hoveredPlanet
+                    ? hoveredPlanet.isUnlocked
                         ? 'Разблокировано'
                         : 'Заблокировано'
                     : 'Неизвестен'}

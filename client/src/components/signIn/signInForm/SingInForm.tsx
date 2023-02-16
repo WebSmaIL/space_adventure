@@ -11,7 +11,12 @@ interface IFormInputs {
     Password: string;
 }
 
-const SignInForm = () => {
+interface IProps {
+    isRegister: boolean;
+    setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SignInForm = ({ setIsRegister, isRegister }: IProps) => {
     const {
         register,
         handleSubmit,
@@ -56,8 +61,9 @@ const SignInForm = () => {
                 <Button text="Войти" />
             </Form>
             <AuthorizationLink
+                isRegister={isRegister}
+                setIsRegister={setIsRegister}
                 linkText={'Регистрация'}
-                path={'/register'}
                 text={'Нет аккаунта?'}
             />
         </>

@@ -1,14 +1,21 @@
+import { useAppSelector } from '../../../hooks';
+import { getPlanets } from '../../../redux/ducks/planets';
+import { IHoveredPlanet } from '../interfaces';
 import { Container, Sun } from './KeyVisualStyles';
-import { IPlanet, planets } from './data';
 import PlanetSwitch from './PlanetSwitch';
 
 interface IProps {
-    setTitleText: React.Dispatch<React.SetStateAction<string>>
-    setCurrentPlanet: React.Dispatch<React.SetStateAction<string | undefined>>
-    setIsUnlocked: React.Dispatch<React.SetStateAction<boolean>>
+    setHoveredPlanet: React.Dispatch<React.SetStateAction<IHoveredPlanet | undefined>>
+    setCurrentPlanet: React.Dispatch<React.SetStateAction<{
+        id: number;
+        src: string;
+    } | undefined>>
 }
 
-const KeyVisual = ({ setTitleText, setCurrentPlanet, setIsUnlocked }: IProps) => {
+const KeyVisual = ({
+    setHoveredPlanet,
+    setCurrentPlanet,
+}: IProps) => {
     const containerVariants = {
         hidden: {
             opacity: 0,
@@ -29,6 +36,8 @@ const KeyVisual = ({ setTitleText, setCurrentPlanet, setIsUnlocked }: IProps) =>
         },
     };
 
+    const planets = useAppSelector(getPlanets);
+
     return (
         <Container
             variants={containerVariants}
@@ -37,18 +46,14 @@ const KeyVisual = ({ setTitleText, setCurrentPlanet, setIsUnlocked }: IProps) =>
             exit="exit"
         >
             <Sun />
-            {planets.map((planet: IPlanet) => (
+            {planets.list.map((planet) => (
                 <PlanetSwitch
-                    name={planet.name}
-                    path={planet.path}
-                    color={planet.color}
+                    name={planet.planet_key}
                     id={planet.id}
-                    sectionColor={planet.sectionColor}
                     key={planet.id}
-                    setTitleText={setTitleText}
-                    setCurrentPlanet={setCurrentPlanet}
-                    setIsUnlocked={setIsUnlocked}
+                    setHoveredPlanet={setHoveredPlanet}
                     level={planet.level}
+                    setCurrentPlanet={setCurrentPlanet}
                 />
             ))}
         </Container>
