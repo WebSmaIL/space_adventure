@@ -5,7 +5,7 @@ interface IProps {
     startNaming: string;
 }
 
-const Main = () => {
+const Home = () => {
     return (
         <div>
             <div>
@@ -42,7 +42,7 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default Home;
 
 
 const Signin = styled.h1`
