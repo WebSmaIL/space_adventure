@@ -1,4 +1,93 @@
 @font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-Regular.eot');
+  src: local('Bellota Regular'), local('Bellota-Regular'),
+      url('./assets/fonts/Bellota/Bellota-Regular.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-Regular.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-Regular.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-Bold.eot');
+  src: local('Bellota Bold'), local('Bellota-Bold'),
+      url('./assets/fonts/Bellota/Bellota-Bold.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-Bold.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-Bold.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-LightItalic.eot');
+  src: local('Bellota Light Italic'), local('Bellota-LightItalic'),
+      url('./assets/fonts/Bellota/Bellota-LightItalic.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-LightItalic.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-LightItalic.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-Italic.eot');
+  src: local('Bellota Italic'), local('Bellota-Italic'),
+      url('./assets/fonts/Bellota/Bellota-Italic.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-Italic.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-Italic.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-BoldItalic.eot');
+  src: local('Bellota Bold Italic'), local('Bellota-BoldItalic'),
+      url('./assets/fonts/Bellota/Bellota-BoldItalic.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-BoldItalic.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-BoldItalic.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Bellota';
+  src: url('./assets/fonts/Bellota/Bellota-Light.eot');
+  src: local('Bellota Light'), local('Bellota-Light'),
+      url('./assets/fonts/Bellota/Bellota-Light.eot?#iefix')
+          format('embedded-opentype'),
+      url('./assets/fonts/Bellota/Bellota-Light.woff2') format('woff2'),
+      url('./assets/fonts/Bellota/Bellota-Light.woff') format('woff'),
+      url('./assets/fonts/Bellota/Bellota-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  background: url(../src/assets/img/home_background/Background.svg) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+=======
     font-family: 'Bellota';
     src: url('./assets/fonts/Bellota/Bellota-Regular.eot');
     src: local('Bellota Regular'), local('Bellota-Regular'),
@@ -87,13 +176,14 @@ body {
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Убираем внутренние отступы */
 ul[class],
 ol[class] {
-    padding: 0;
+  padding: 0;
 }
 
 /* Убираем внешние отступы */
@@ -126,12 +216,12 @@ body {
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
 ul[class],
 ol[class] {
-    list-style: none;
+  list-style: none;
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
 a:not([class]) {
-    text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
 
 /* Упрощаем работу с изображениями */
@@ -162,3 +252,4 @@ select {
         scroll-behavior: auto !important;
     }
 }
+
