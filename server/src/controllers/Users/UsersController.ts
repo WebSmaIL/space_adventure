@@ -58,11 +58,10 @@ class UsersController {
             res.status(500).json('Incorrect request');
         }
     }
-
     async addUser(req: Request, res: Response, tableName: string) {
         try {
-            const { id, name, login, password, email } = req.body;
-            query(ADD_USER, [id, name, login, password, email])
+            const { id, login, password, email, balance, level } = req.body;
+            query(ADD_USER, [id, login, password, email, balance, level])
                 .then((result) => {
                     res.status(200).json({ message: 'User was added' });
                 })

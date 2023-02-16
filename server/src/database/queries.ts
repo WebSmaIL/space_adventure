@@ -1,5 +1,5 @@
 export const DELETE_USER_BY_ID = `DELETE FROM users WHERE id=?`;
-export const ADD_USER = `INSERT INTO users (id, name, login, password, email) VALUES (?, ?, ?, ?, ?)`;
+export const ADD_USER = `INSERT INTO users (id, login, password, email, balance, level) VALUES (?, ?, ?, ?, ?, ?)`;
 export const UPDATE_USER_LOGIN_PASS = `UPDATE users SET login=?, password=? WHERE id=?`;
 export const UPDATE_USER_BALANCE = `UPDATE users SET balance=? WHERE id=?`;
 export const UPDATE_USER_EMAIL = `UPDATE users SET email=? WHERE id=?`;
