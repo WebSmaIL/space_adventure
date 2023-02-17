@@ -9,7 +9,7 @@ import { background_authorize } from '../../assets/img/backgrounds';
 const SignIn = () => {
     const [isRegister, setIsRegister] = useState<boolean>(true);
     return (
-        <>
+        <Wrapper>
             <Container>
                 <Content>
                     <Title>{isRegister ? 'Вход' : 'Регистрация'}</Title>
@@ -31,8 +31,8 @@ const SignIn = () => {
                     )}
                 </Content>
             </Container>
-            <Background src={background_authorize} alt="" />
-        </>
+            {/* <Background src={background_authorize} alt="" /> */}
+        </Wrapper>
     );
 };
 
@@ -41,9 +41,9 @@ export default SignIn;
 const Container = styled.div`
     width: fit-content;
     border-radius: 40px;
-    margin: 100px auto 0 auto;
+    margin: 0 auto 0 auto;
     padding: 20px 100px;
-    background-color: #00000092;
+    background: #000000bd;
     z-index: 3;
 
     font-family: sans-serif;
@@ -66,4 +66,11 @@ const Logo = styled.div`
     width: 250px;
     height: 125px;
     margin-bottom: 80px;
+`;
+
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100vh;
+    background-image: url(${background_authorize});
+    padding: 100px 0;
 `;
