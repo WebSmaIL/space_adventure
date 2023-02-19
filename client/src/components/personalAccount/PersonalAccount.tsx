@@ -1,23 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import { background_personal_account } from '../../assets/img/backgrounds'
-import UserInformation from './userInformation/UserInformation'
+import React from 'react';
+import styled from 'styled-components';
+import { background_personal_account } from '../../assets/img/backgrounds';
+import UserInformation from './userInformation/UserInformation';
 
 const PersonalAccount = () => {
-  return (
-    <div>
-        <Background src={background_personal_account} alt='' />
-        <UserInformation/>
-    </div>
-  )
-}
+    return (
+        <Wrapper>
+            <UserInformation />
+        </Wrapper>
+    );
+};
 
-export default PersonalAccount
+export default PersonalAccount;
 
-const Background = styled.img`
-    
+const Wrapper = styled.div`
     width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 0;
+    background-image: url(${background_personal_account});
+    padding: 100px 0;
 `
