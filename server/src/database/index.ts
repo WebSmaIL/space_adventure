@@ -11,5 +11,6 @@ export {
     UPDATE_USER_EMAIL,
     GET_ALL,
     GET_BY_ID,
+    GET_BY_LOGIN,
 } from './queries';
 export { table_names } from './tableNames';

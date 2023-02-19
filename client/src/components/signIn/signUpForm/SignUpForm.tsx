@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Input from '../../../assets/uikit/Input';
 import Button from '../../../assets/uikit/Button';
@@ -6,6 +6,11 @@ import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword } from '../../../validate/Validate';
 import AuthorizationLink from '../linkContainer/AuthorizationLink';
 import { Form } from '../formStyles/formStyles';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { fetchRegister } from '../../../redux/ducks/userInfo/asyncThunk';
+import { useNavigate } from 'react-router-dom';
+import { getUserInfo } from '../../../redux/ducks/userInfo';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
 interface IFormInputs {
     UserName: string;
@@ -20,6 +25,9 @@ interface IProps {
 }
 
 const SignUpForm = ({ isRegister, setIsRegister }: IProps) => {
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(getUserInfo);
+
     const {
         register,
         handleSubmit,
@@ -29,7 +37,20 @@ const SignUpForm = ({ isRegister, setIsRegister }: IProps) => {
         mode: 'onChange',
     });
 
-    const onSubmit = (data: any) => console.log(data);
+    const onSubmit = (data: IFormInputs) => {
+        dispatch(
+            fetchRegister({
+                email: data.Email,
+                login: data.UserName,
+                password: data.Password,
+            })
+        );
+    };
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        user.userInfo.isAuthorize && navigate('/');
+    }, [navigate, user.userInfo.isAuthorize]);
 
     const confirmPassword = (text: string) => watch('Password') === text;
 
@@ -106,6 +127,7 @@ const SignUpForm = ({ isRegister, setIsRegister }: IProps) => {
                 isRegister={isRegister}
                 text={'Есть аккаунт?'}
             />
+            {user.errorMessage && <ErrorMessage errorMessage={user.errorMessage} />}
         </>
     );
 };

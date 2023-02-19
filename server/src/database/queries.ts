@@ -9,3 +9,4 @@ export const ADD_LEADER = (tableName: string) => `INSERT INTO ${tableName} (user
 export const UPDATE_LEADER= (tableName: string) => `UPDATE ${tableName} SET score=? WHERE user_id=?`;
 export const GET_ALL = (tableName: string) => `SELECT * FROM ${tableName}`;
 export const GET_BY_ID = (tableName: string) => `SELECT * FROM ${tableName} WHERE id=?`;
+export const GET_BY_LOGIN = `SELECT * FROM users WHERE login=?`;

@@ -11,8 +11,12 @@ router.get('/users/:id', (req: Request, res: Response) =>
     UsersController.getUserById(req, res, 'users')
 );
 
+router.get('/users/getbylogin/:login&:password', (req: Request, res: Response) =>
+    UsersController.getUserByLogin(req, res)
+);
+
 router.post('/users', (req: Request, res: Response) =>
-    UsersController.addUser(req, res, 'users')
+    UsersController.addUser(req, res)
 );
 
 router.delete('/users/:id', (req: Request, res: Response) =>
