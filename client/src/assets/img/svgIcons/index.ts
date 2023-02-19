@@ -11,10 +11,12 @@ export {default as uranus} from './uranus.svg';
 export {default as venus} from './venus.svg';
 
 export {default as logo} from './Logo.svg';
-export {default as avatar} from './Avatars.png';
+export {default as avatar} from './Avatars.svg';
 export {default as coinLogo} from './coinLogo.svg';
 export {default as cupOne} from './cupOne.svg';
 export {default as cupTwo} from './cupTwo.svg';
 export {default as cupThree} from './cupThree.svg';
 export {default as unknow_planet} from './unknow_planet.svg';
 export {default as close} from './close.svg'
+export {default as spaceX} from './SpaceX.svg'
+export {default as circle} from './circle.svg'
