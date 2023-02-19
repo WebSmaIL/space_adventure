@@ -27,7 +27,7 @@ const App = () => {
                     element={<Leaderboard />}
                 />
             </Routes> */}
-            <PersonalAccount/>
+            
         </>
     );
 };

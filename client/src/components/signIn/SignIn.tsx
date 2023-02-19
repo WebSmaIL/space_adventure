@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SignInForm from './signInForm/SingInForm';
 import { logo } from '../../assets/img/svgIcons';
 import SignUpForm from './signUpForm/SignUpForm';
-import Background from '../../assets/uikit/Background';
 import { background_authorize } from '../../assets/img/backgrounds';
 
 const SignIn = () => {
@@ -31,7 +30,6 @@ const SignIn = () => {
                     )}
                 </Content>
             </Container>
-            {/* <Background src={background_authorize} alt="" /> */}
         </Wrapper>
     );
 };

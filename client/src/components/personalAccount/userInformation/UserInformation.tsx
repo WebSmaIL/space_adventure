@@ -1,25 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
+import { background_personal_account } from '../../../assets/img/backgrounds';
 import { spaceX } from '../../../assets/img/svgIcons';
+import Button from '../../../assets/uikit/Button';
 import Achievements from './achievements/Achievements';
 import StatisticUser from './statisticUser/StatisticUser';
 import UserInfo from './userInfo/UserInfo';
 
 const UserInformation = () => {
     return (
-        <Container>
-            <ContainerUserInfo><UserInfo/></ContainerUserInfo>
-            <ContainerAchievementsUser><Achievements/></ContainerAchievementsUser>
-            <Ship src={spaceX} />
-            <ContainerStatisticUser><StatisticUser/></ContainerStatisticUser>
-            <Button>Улучшить</Button>
-        </Container>
+        <Wrapper>
+            <Container>
+                <ContainerUserInfo><UserInfo/></ContainerUserInfo>
+                <ContainerAchievementsUser><Achievements/></ContainerAchievementsUser>
+                <Ship src={spaceX} />
+                
+                <ContainerStatisticUser><StatisticUser/></ContainerStatisticUser>
+                <ContainerBackground><Button text='Улучшить'/></ContainerBackground>
+            </Container>
+            
+        </Wrapper>
+        
     );
 };
 
 export default UserInformation;
 
-const Container = styled.div`
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100vh;
+    background-image: url(${background_personal_account});
+    padding: 100px 0;
+`
+
+const Container = styled.div` 
     position: relative;
     margin: 40px auto 0;
 
@@ -38,20 +52,6 @@ const Ship = styled.img`
     width: 351px;
     height: 588px;
 `;
-const Button = styled.button`
-    position: absolute;
-    background: transparent;
-    color: rgba(206, 183, 255, 1);
-    font-size: 40px;
-    font-weight: 400;
-    
-    border: 5px solid rgba(206, 183, 255, 1);
-    bottom: 40px;
-    width: 300px;
-    height: 70px;
-    filter: drop-shadow(0px 0px 20px #8A53FF);
-    border-radius: 36px;
-`;
 
 const ContainerStatisticUser = styled.div`
     position: absolute;
@@ -67,4 +67,9 @@ const ContainerUserInfo = styled.div`
     position: absolute;
     left: 50px;
     top: 50px;
+`
+
+const ContainerBackground = styled.div`
+    position: absolute;
+    bottom: 40px;
 `
