@@ -64,6 +64,7 @@ const Input = styled.input`
 
 const Button = styled.button`
     border: none;
+    cursor: pointer;
     border-radius: 1em;
     border: solid #CEB7FF;
     background-color: #ffffff14;
