@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface IProps {
-    startNaming: string;
-}
-
 const Home = () => {
     return (
         <div>
@@ -18,22 +14,22 @@ const Home = () => {
                 <About>Обучающая игровая платформа</About>
             </div>
             <div>
-                <Block_type_start>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_start>
+                <BlockTypeStart>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeStart>
             </div>
             <div>
-                <Block_type_away_right>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_away_right>
+                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
             </div>
             <div>
-                <Block_type_away_left>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_away_left>
+                <BlockTypeAwayLeft>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayLeft>
             </div>
             <div>
-                <Block_type_away_right>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_away_right>
+                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
             </div>
             <div>
-                <Block_type_away_left>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_away_left>
+                <BlockTypeAwayLeft>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayLeft>
             </div>
             <div>
-                <Block_type_away_right>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></Block_type_away_right>
+                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
             </div>
             <div>
                 <Footer>© Space Adventure<br></br><br></br>+7 (913) 684-55-43<br></br>e.viktorovvv@yandex.com<br></br><br></br>Пользовательское соглашение<br></br><br></br>link.com<br></br>2023</Footer>
@@ -69,7 +65,7 @@ const About = styled.h1`
     font-family: sans-serif;
 `;
 
-const Block_type_start = styled.div`
+const BlockTypeStart = styled.div`
     color: #8E83FF;
     text-align: center;
     font-size: 48px;
@@ -83,7 +79,7 @@ const Block_type_start = styled.div`
     font-weight: 700;
 `;
 
-const Block_type_away_right = styled.div`
+const BlockTypeAwayRight = styled.div`
     color: #8E83FF;
     text-align: center;
     font-size: 48px;
@@ -98,7 +94,7 @@ const Block_type_away_right = styled.div`
     font-weight: 700;
 `;
 
-const Block_type_away_left = styled.div`
+const BlockTypeAwayLeft = styled.div`
     color: #8E83FF;
     text-align: center;
     font-size: 48px;

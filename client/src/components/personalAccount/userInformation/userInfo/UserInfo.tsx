@@ -4,16 +4,16 @@ import {avatar, coinLogo} from '../../../../assets/img/svgIcons'
 import { useAppSelector } from '../../../../hooks'
 import { getUserInfo } from '../../../../redux/ducks/userInfo'
 const UserInfo = () => {
-    const userInfo = useAppSelector(getUserInfo)
+    const user = useAppSelector(getUserInfo)
   return (
     <Container>
         <UserAvatar src={avatar}/>
         <ContainerInfo>
-            <UserName>{userInfo.login}</UserName>
-            <Level>Уровень - {userInfo.level}</Level>
+            <UserName>{user.userInfo.login}</UserName>
+            <Level>Уровень - {user.userInfo.level}</Level>
             <ContainerBalance>
                     <LogoCoin src={coinLogo} alt="" />
-                    <UserBalance>{userInfo.balance} - coin</UserBalance>
+                    <UserBalance>{user.userInfo.balance} - coin</UserBalance>
             </ContainerBalance>
         </ContainerInfo>
     </Container>
