@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { background_home } from '../../assets/img/backgrounds';
 import Foooter from '../footer/Footer';
-import BlockType from './block_type/BlockType';
+import BlockAbout from './blockAbout/BlockAbout';
+import BlockType from './blockType/BlockType';
+
 
 
 const Home = () => {
@@ -14,6 +16,7 @@ const Home = () => {
             </Signin>
             <Name>Space<br></br>Adventure</Name>
             <About>Обучающая игровая платформа</About>
+            <BlockAbout/>
             <BlockType />
         </Wrapper>
     );
