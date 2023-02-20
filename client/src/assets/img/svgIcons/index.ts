@@ -18,5 +18,8 @@ export {default as cupTwo} from './cupTwo.svg';
 export {default as cupThree} from './cupThree.svg';
 export {default as unknow_planet} from './unknow_planet.svg';
 export {default as close} from './close.svg'
+export {default as IconsTelegram} from './Telegram.svg'
+export {default as IconsGithub} from './Github.svg'
+export {default as IconsDribbble} from './Dribbble.svg'
 export {default as spaceX} from './SpaceX.svg'
 export {default as circle} from './circle.svg'

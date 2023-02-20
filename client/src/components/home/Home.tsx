@@ -1,58 +1,49 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { background_home } from '../../assets/img/backgrounds';
+import Foooter from '../footer/Footer';
+import BlockAbout from './blockAbout/BlockAbout';
+import BlockType from './blockType/BlockType';
 
 const Home = () => {
     return (
-        <div>
-            <div>
-                <Signin>Вход / Регистрация</Signin>
-            </div>
-            <div>
-                <Name>Space<br></br>Adventure</Name>
-            </div>
-            <div>
-                <About>Обучающая игровая платформа</About>
-            </div>
-            <div>
-                <BlockTypeStart>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeStart>
-            </div>
-            <div>
-                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
-            </div>
-            <div>
-                <BlockTypeAwayLeft>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayLeft>
-            </div>
-            <div>
-                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
-            </div>
-            <div>
-                <BlockTypeAwayLeft>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayLeft>
-            </div>
-            <div>
-                <BlockTypeAwayRight>Лучшие игры современности<br></br><Span>Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста Описание текста</Span></BlockTypeAwayRight>
-            </div>
-            <div>
-                <Footer>© Space Adventure<br></br><br></br>+7 (913) 684-55-43<br></br>e.viktorovvv@yandex.com<br></br><br></br>Пользовательское соглашение<br></br><br></br>link.com<br></br>2023</Footer>
-            </div>
-        </div>
+        <Wrapper>
+            <Signin to='/login'>
+                Вход / Регистрация
+            </Signin>
+            <Name>Space<br></br>Adventure</Name>
+            <About>Обучающая игровая платформа</About>
+            <BlockAbout />
+            <BlockType />
+        </Wrapper>
     );
 };
 
 export default Home;
 
+const Wrapper = styled.div`
+    background-image: url(${background_home});
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+`;
 
-const Signin = styled.h1`
+const Signin = styled(NavLink)`
+    display: block;
+    justify-content: right;
     color: #CEB7FF;
     text-align: right;
+    text-decoration: none;
     font-size: 24px;
-    margin-right: 2em;
-    margin-top: 1em;
+    padding: 1em 1em 0em 1em;
     font-family: sans-serif;
 `;
 
 const Name = styled.h1`
     text-align: center;
-    font-size: 144px;
+    font-size: 128px;
     color: transparent;
     -webkit-text-stroke: 3px #8E83FF;
     text-shadow: 5px 5px 15px #8E83FF;
@@ -63,63 +54,4 @@ const About = styled.h1`
     text-align: center;
     font-size: 24px;
     font-family: sans-serif;
-`;
-
-const BlockTypeStart = styled.div`
-    color: #8E83FF;
-    text-align: center;
-    font-size: 48px;
-    font-family: sans-serif;
-    background-color: #31313198;
-    border-radius: 1em;
-    width: 25%;
-    margin-left: 8em;
-    display: inline-block;
-    margin-top: 40em;
-    font-weight: 700;
-`;
-
-const BlockTypeAwayRight = styled.div`
-    color: #8E83FF;
-    text-align: center;
-    font-size: 48px;
-    font-family: sans-serif;
-    background-color: #31313198;
-    border-radius: 1em;
-    width: 25%;
-    display: inline-block;
-    margin-right: 8em;
-    float: right;
-    margin-top: -5em;
-    font-weight: 700;
-`;
-
-const BlockTypeAwayLeft = styled.div`
-    color: #8E83FF;
-    text-align: center;
-    font-size: 48px;
-    font-family: sans-serif;
-    background-color: #31313198;
-    border-radius: 1em;
-    width: 25%;
-    margin-left: 8em;
-    display: inline-block;
-    margin-top: 4em;
-    font-weight: 700;
-`;
-
-const Span = styled.span`
-    color: #ffffff;
-    font-size: 38px;
-    font-weight: 100;
-`;
-
-
-const Footer = styled.h1`
-    color: #ffffff;
-    text-align: center;
-    font-size: 22px;
-    font-family: sans-serif;
-    margin-top: 35em;
-    margin-bottom: 5em;
 `;
