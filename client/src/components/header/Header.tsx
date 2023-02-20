@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { logo, avatar, coinLogo } from '../../assets/img/svgIcons';
 
@@ -11,7 +12,7 @@ const Header = ({ userName, balance }: IProps) => {
     return (
         <HeaderMain>
             <LogoContainer>
-                <Logo src={logo} />
+                <NavLink to='/'><Logo src={logo} /></NavLink>
             </LogoContainer>
             <FlexContainer>
                 <UserInfoContainer>
@@ -21,7 +22,7 @@ const Header = ({ userName, balance }: IProps) => {
                         <UserBalance>{balance} - coin</UserBalance>
                     </ContainerBalance>
                 </UserInfoContainer>
-                <UserAvatar src={avatar} />
+                <NavLink to='/profile/settings'><UserAvatar src={avatar} /></NavLink>
             </FlexContainer>
         </HeaderMain>
     );

@@ -32,6 +32,7 @@ const Wrapper = styled.div`
     height: 100%;
     background-size: cover;
     background-position: center;
+    padding: 200px 0;
 `;
 
 const PositionLogin = styled.div`
@@ -42,12 +43,14 @@ const SettingsName = styled.h1`
     font-size: 48px;
     color: #ceb7ff;
     text-align: left;
-    margin-left: 1.2em;
+    padding-left: 1.2em;
+    padding-top: 0.5em;
 `;
 
 const Backgrounds = styled.div`
     background-color: #0000008f;
     backdrop-filter: blur(10px);
     border-radius: 1em;
+    margin: 0 auto;
     width: 60%;
 `;

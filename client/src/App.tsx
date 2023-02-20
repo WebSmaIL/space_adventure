@@ -9,6 +9,7 @@ import Leaderboard from './components/leaderboard/Leaderboard';
 import Home from './components/home/Home';
 import Foooter from './components/footer/Footer';
 import Settings from './components/settings/Settings';
+import PersonalAccount from './components/personalAccount/PersonalAccount';
 
 const App = () => {
     const user = useAppSelector(getUserInfo);
@@ -34,7 +35,7 @@ const App = () => {
                             path="/leaderboard/:table"
                             element={<Leaderboard />}
                         />
-                    </>
+                    </> 
                 )}
             </Routes>
         </>

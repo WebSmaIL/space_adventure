@@ -63,7 +63,7 @@ const Title = styled.h1`
 const Logo = styled.div`
     width: 250px;
     height: 125px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 `;
 
 const Wrapper = styled.div`
