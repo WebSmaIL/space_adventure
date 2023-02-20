@@ -59,7 +59,6 @@ const userSlice = createSlice({
                 state.errorMessage = undefined;
 
                 state.isLoading = false;
-                console.log(action.payload.id);
             })
             .addCase(fetchLogin.rejected, (state, action) => {
                 state.errorMessage = action.payload?.message;

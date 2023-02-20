@@ -22,7 +22,7 @@ const Header = ({ userName, balance }: IProps) => {
                         <UserBalance>{balance} - coin</UserBalance>
                     </ContainerBalance>
                 </UserInfoContainer>
-                <NavLink to='/profile/settings'><UserAvatar src={avatar} /></NavLink>
+                <NavLink to='/profile'><UserAvatar src={avatar} /></NavLink>
             </FlexContainer>
         </HeaderMain>
     );

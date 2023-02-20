@@ -12,16 +12,16 @@ const Foooter = () => {
                     <Copyright>© 2023, project</Copyright>
 
                     <Icons>
-                        <a href='#'><img src={IconsTelegram}></img></a>
-                        <a href='#'><img src={IconsGithub}></img></a>
-                        <a href='#'><img src={IconsDribbble}></img></a>
+                        <a href='/'><img src={IconsTelegram} alt=''></img></a>
+                        <a href='/'><img src={IconsGithub} alt=''></img></a>
+                        <a href='/'><img src={IconsDribbble} alt=''></img></a>
                     </Icons>
 
                     <FooterMini>
-                        <SecurityPolicy><a href='#'>Пользовательское соглашение</a></SecurityPolicy>
-                        <SecurityPolicy><a href='#'>Политика конфеденциальности</a></SecurityPolicy>
-                        <SecurityPolicy><a href='#'>Разработчики</a></SecurityPolicy>
-                        <SecurityPolicy><a href='#'>spaceadve@mail.com</a></SecurityPolicy>
+                        <SecurityPolicy><a href='/'>Пользовательское соглашение</a></SecurityPolicy>
+                        <SecurityPolicy><a href='/'>Политика конфеденциальности</a></SecurityPolicy>
+                        <SecurityPolicy><a href='/'>Разработчики</a></SecurityPolicy>
+                        <SecurityPolicy><a href='/'>spaceadve@mail.com</a></SecurityPolicy>
                     </FooterMini>
                 </Footer>
             </div>
@@ -34,7 +34,6 @@ export default Foooter;
 
 const Footer = styled.div`
     background-color: #0D0D0D;
-    margin-top: 40em;
 `;
 
 const Naming = styled.h1`

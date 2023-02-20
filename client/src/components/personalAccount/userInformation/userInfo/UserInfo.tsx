@@ -4,21 +4,25 @@ import { avatar, coinLogo } from '../../../../assets/img/svgIcons';
 import { useAppSelector } from '../../../../hooks';
 import { getUserInfo } from '../../../../redux/ducks/userInfo';
 const UserInfo = () => {
-    const user = useAppSelector(getUserInfo)
-  return (
-    <Container>
-        <UserAvatar src={avatar}/>
-        <ContainerInfo>
-            <UserName>{user.userInfo.login}</UserName>
-            <Level>Уровень - {user.userInfo.level}</Level>
-            <ContainerBalance>
-                    <LogoCoin src={coinLogo} alt="" />
-                    <UserBalance>{user.userInfo.balance} - coin</UserBalance>
-            </ContainerBalance>
-        </ContainerInfo>
-    </Container>
-  )
-}
+    const user = useAppSelector(getUserInfo);
+    return (
+        <>
+            <Container>
+                <UserAvatar src={avatar} />
+                <ContainerInfo>
+                    <UserName>{user.userInfo.login}</UserName>
+                    <Level>Уровень - {user.userInfo.level}</Level>
+                    <ContainerBalance>
+                        <LogoCoin src={coinLogo} alt="" />
+                        <UserBalance>
+                            {user.userInfo.balance} - coin
+                        </UserBalance>
+                    </ContainerBalance>
+                </ContainerInfo>
+            </Container>
+        </>
+    );
+};
 
 export default UserInfo;
 
@@ -62,7 +66,7 @@ const ContainerBalance = styled.div`
 const LogoCoin = styled.img`
     display: block;
     color: #6522a8;
-    
+
     background: rgba(170, 130, 255, 1);
     border-radius: 50%;
     border: 4px solid #6522a8;

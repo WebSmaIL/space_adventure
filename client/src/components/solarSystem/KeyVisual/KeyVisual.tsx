@@ -1,5 +1,6 @@
-import { useAppSelector } from '../../../hooks';
-import { getPlanets } from '../../../redux/ducks/planets';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { fetchPlanets, getPlanets } from '../../../redux/ducks/planets';
 import { IHoveredPlanet } from '../interfaces';
 import { Container, Sun } from './KeyVisualStyles';
 import PlanetSwitch from './PlanetSwitch';
@@ -36,6 +37,12 @@ const KeyVisual = ({
         },
     };
 
+    const dispatch = useAppDispatch();
+    
+    useEffect(() => {
+        dispatch(fetchPlanets());
+    }, [dispatch])
+    
     const planets = useAppSelector(getPlanets);
 
     return (

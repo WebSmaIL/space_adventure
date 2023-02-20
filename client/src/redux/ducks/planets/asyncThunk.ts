@@ -8,7 +8,7 @@ export const fetchPlanets = createAsyncThunk<
 >(
     'planets/fetchPlanets',
     async () => {
-        const res = await fetch('/api/planets');
+        const res = await fetch('https://websmail.store/api/planets');
         
         return await res.json();
 });

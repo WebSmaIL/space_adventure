@@ -5,7 +5,6 @@ import { background_settings } from '../../assets/img/backgrounds';
 import Password from './password/Password';
 import Login from './login/Login';
 import Mail from './mail/Mail';
-import Header from '../header/Header';
 
 const Settings = () => {
     return (
