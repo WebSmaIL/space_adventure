@@ -14,6 +14,14 @@ const BlockType = () => {
                     <H2>Лучшие игры современности</H2>
                     <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание</Span>
                 </ContainerInfoLeft>
+                <ContainerInfoLeft>
+                    <H2>Лучшие игры современности</H2>
+                    <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание</Span>
+                </ContainerInfoLeft>
+                <ContainerInfoLeft>
+                    <H2>Лучшие игры современности</H2>
+                    <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание</Span>
+                </ContainerInfoLeft>
             </ContainerInfo>
 
             <ContainerInfo2>
@@ -24,6 +32,14 @@ const BlockType = () => {
                 <ContainerInfoRight>
                     <H2>Лучшие игры современности</H2>
                     <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание</Span>
+                </ContainerInfoRight>
+                <ContainerInfoRight>
+                    <H2>Лучшие игры современности</H2>
+                    <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание</Span>
+                </ContainerInfoRight>
+                <ContainerInfoRight>
+                    <H2>Лучшие игры современности</H2>
+                    <Span>Текст описание Текст описание Текст описание Текст описание Текст описание Текст описание </Span>
                 </ContainerInfoRight>
             </ContainerInfo2>
         </Container>
@@ -36,13 +52,10 @@ export default BlockType;
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    width: 1000px;
-    margin: 1500px auto;
+    margin: 400px auto;
 `;
 
 const ContainerInfo = styled.div`
-    margin-bottom: 50px;
-    
 `;
 
 const ContainerInfoLeft = styled.div`
@@ -78,6 +91,5 @@ const H2 = styled.h2`
     font-size: 38px;
 `;
 
-const Span = styled.span`
-    
-`
+const Span = styled.span`  
+`;

@@ -7,7 +7,6 @@ import BlockAbout from './blockAbout/BlockAbout';
 import BlockType from './blockType/BlockType';
 
 
-
 const Home = () => {
     return (
         <Wrapper>
@@ -16,7 +15,7 @@ const Home = () => {
             </Signin>
             <Name>Space<br></br>Adventure</Name>
             <About>Обучающая игровая платформа</About>
-            <BlockAbout/>
+            <BlockAbout />
             <BlockType />
         </Wrapper>
     );
@@ -28,6 +27,8 @@ const Wrapper = styled.div`
     background-image: url(${background_home});
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center;
 `;
 
 const Signin = styled(NavLink)`
