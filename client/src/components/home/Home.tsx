@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { background_home } from '../../assets/img/backgrounds';
-import Foooter from '../footer/Footer';
 import BlockAbout from './blockAbout/BlockAbout';
 import BlockType from './blockType/BlockType';
 
