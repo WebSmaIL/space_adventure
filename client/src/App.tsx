@@ -8,28 +8,35 @@ import SignIn from './components/signIn/SignIn';
 import Leaderboard from './components/leaderboard/Leaderboard';
 import Home from './components/home/Home';
 import Foooter from './components/footer/Footer';
+import Settings from './components/settings/Settings';
 
 const App = () => {
-    const userInfo = useAppSelector(getUserInfo);
+    const user = useAppSelector(getUserInfo);
+    
+
     return (
         <>
-            {/* {userInfo.isAuthorize ? <Header balance={userInfo.balance} userName={userInfo.login} /> : null}
+            {user.userInfo.isAuthorize && (
+                <Header balance={user.userInfo.balance} userName={user.userInfo.login} />
+            )}
             <Routes>
                 <Route
-                    path='/'
-                    element={userInfo.isAuthorize ? <SolarSystem /> : null}
+                    path="/"
+                    element={user.userInfo.isAuthorize ? <SolarSystem /> : <Home />}
                 />
-                <Route
-                    path='/login'
-                    element={<SignIn />}
-                />
-                <Route
-                    path='/leaderboard/:table'
-                    element={<Leaderboard />}
-                />
-            </Routes> */}
-            <Home />
-            <Foooter />
+                <Route path="/login" element={<SignIn />} />
+
+                {user.userInfo.isAuthorize && (
+                    <>
+                        <Route path="/profile" element={<PersonalAccount />} />
+                        <Route path="/profile/settings" element={<Settings />} />
+                        <Route
+                            path="/leaderboard/:table"
+                            element={<Leaderboard />}
+                        />
+                    </>
+                )}
+            </Routes>
         </>
     );
 };

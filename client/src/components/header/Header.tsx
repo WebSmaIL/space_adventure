@@ -36,10 +36,10 @@ const HeaderMain = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     width: 100%;
     height: 85px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.322);
     z-index: 1000;
     &:before {
         content: '';
@@ -49,11 +49,6 @@ const HeaderMain = styled.div`
         width: 100%;
         height: 2px;
         z-index: -1;
-        background: linear-gradient(
-            180deg,
-            rgba(206, 183, 255, 1),
-            rgba(115, 102, 255, 0.5)
-        );
     }
 `;
 

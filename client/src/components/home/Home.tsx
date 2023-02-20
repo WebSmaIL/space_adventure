@@ -6,7 +6,6 @@ import Foooter from '../footer/Footer';
 import BlockAbout from './blockAbout/BlockAbout';
 import BlockType from './blockType/BlockType';
 
-
 const Home = () => {
     return (
         <Wrapper>
