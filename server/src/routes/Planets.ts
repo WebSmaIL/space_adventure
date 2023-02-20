@@ -1,6 +1,5 @@
 import express, { Response, Request } from 'express';
 import { PlanetsController } from '../controllers/Planets';
-import { table_names } from '../database';
 
 const router = express.Router();
 

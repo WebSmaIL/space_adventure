@@ -8,8 +8,10 @@ import {
     UPDATE_USER_LOGIN_PASS,
     UPDATE_USER_BALANCE,
     UPDATE_USER_EMAIL,
+    GET_BY_LOGIN,
 } from '../../database/queries';
-import { toNumber, toObject } from '../../helpers';
+import { toObject } from '../../helpers';
+import { v4 as uuidv4 } from 'uuid';
 
 class UsersController {
     async getUsers(req: Request, res: Response, tableName: string) {
@@ -39,6 +41,29 @@ class UsersController {
         }
     }
 
+    async getUserByLogin(req: Request, res: Response) {
+        try {
+            const { login, password} = req.params;
+        
+            if (!login) throw Error();
+            query(GET_BY_LOGIN, [login.split(":")[1]]).then((result) => {
+                try {
+                    const correctlyPass = JSON.parse(JSON.stringify(result))[0].password;
+
+                    if (password.split(":")[1] === correctlyPass) {  
+                        res.json(JSON.parse(JSON.stringify(result))[0]).status(200);
+                    } else {
+                        throw Error()
+                    }
+                } catch (error) {
+                    res.status(500).json({message:"Не верный логин или пароль"});
+                }
+            });
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
     async deleteUserById(req: Request, res: Response, tableName: string) {
         try {
             const { id } = req.params;
@@ -59,12 +84,26 @@ class UsersController {
         }
     }
 
-    async addUser(req: Request, res: Response, tableName: string) {
+    async addUser(req: Request, res: Response) {
         try {
-            const { id, name, login, password, email } = req.body;
-            query(ADD_USER, [id, name, login, password, email])
+            const { login, password, email } = req.body;
+            const id = uuidv4();
+            const balance = 0,
+                level = 0;
+
+            query(ADD_USER, [id, login, password, email, balance, level])
                 .then((result) => {
-                    res.status(200).json({ message: 'User was added' });
+                    console.log([id, login, password, email, balance, level]);
+
+                    query(GET_BY_ID('users'), [id])
+                        .then((result) => {
+                            res.status(200).json(JSON.parse(JSON.stringify(result))[0]);
+                        })
+                        .catch((error) => {
+                            res.status(500).json({
+                                message: 'User is wasn`t added',
+                            });
+                        });
                 })
                 .catch((error) =>
                     res.status(500).json({ message: 'User already exists' })

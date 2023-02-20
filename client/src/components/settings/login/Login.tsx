@@ -6,10 +6,10 @@ const Login = () => {
     return (
         <div>
             <div>
-                <Caption>Смена юзернаме</Caption>
+                <Caption>Сменить Логин</Caption>
                 <Line></Line>
-                <Input placeholder='Новое юзернаме'></Input>
-                <Button>Сменить юзернаме</Button>
+                <Input placeholder='Новый логин'></Input>
+                <Button>Сменить</Button>
             </div>
         </div>
     );
@@ -64,6 +64,7 @@ const Input = styled.input`
 
 const Button = styled.button`
     border: none;
+    cursor: pointer;
     border-radius: 1em;
     border: solid #CEB7FF;
     background-color: #ffffff14;

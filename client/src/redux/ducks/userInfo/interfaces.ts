@@ -1,16 +1,23 @@
-export interface IState {
-    id: string,
-    email: string,
-    login: string,
-    isAuthorize: boolean,
-    balance: number,
-    level: number,
-};
+export interface IUser {
+    id: string;
+    email: string;
+    login: string;
+    balance: number;
+    level: number;
+}
 
-export interface ISetUser {
-    id: string,
-    email: string,
-    login: string,
-    balance: number,
-    level: number,
-};
+export interface IUserState extends IUser {
+    isAuthorize: boolean;
+}
+
+export interface IState {
+    userInfo: IUserState;
+    isLoading: boolean;
+    errorMessage: string | undefined;
+}
+
+export interface IUserRegister {
+    email: string;
+    login: string;
+    password: string;
+}

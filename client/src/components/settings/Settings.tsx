@@ -7,21 +7,17 @@ import Login from './login/Login';
 import Mail from './mail/Mail';
 import Header from '../header/Header';
 
-
 const Settings = () => {
     return (
         <Wrapper>
             <Backgrounds>
                 <SettingsName>Настройки</SettingsName>
-
                 <PositionLogin>
                     <Login />
                 </PositionLogin>
-
                 <PositionLogin>
                     <Mail />
                 </PositionLogin>
-
                 <Password />
             </Backgrounds>
         </Wrapper>
@@ -29,7 +25,6 @@ const Settings = () => {
 };
 
 export default Settings;
-
 
 const Wrapper = styled.div`
     background-image: url(${background_settings});
@@ -45,7 +40,7 @@ const PositionLogin = styled.div`
 
 const SettingsName = styled.h1`
     font-size: 48px;
-    color: #CEB7FF;
+    color: #ceb7ff;
     text-align: left;
     margin-left: 1.2em;
 `;
@@ -55,6 +50,4 @@ const Backgrounds = styled.div`
     backdrop-filter: blur(10px);
     border-radius: 1em;
     width: 60%;
-    margin-left: auto;
-    margin-right: auto;
 `;
