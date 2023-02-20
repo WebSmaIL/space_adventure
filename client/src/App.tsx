@@ -6,8 +6,6 @@ import SolarSystem from './components/solarSystem/SolarSystem';
 import Header from './components/header/Header';
 import SignIn from './components/signIn/SignIn';
 import Leaderboard from './components/leaderboard/Leaderboard';
-import PersonalAccount from './components/personalAccount/PersonalAccount';
-import Home from './components/home/Home';
 import Settings from './components/settings/Settings';
 
 const App = () => {

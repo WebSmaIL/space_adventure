@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { background_settings } from '../../assets/img/backgrounds';
+
 import Password from './password/Password';
 import Login from './login/Login';
 import Mail from './mail/Mail';
-import { background_settings } from '../../assets/img/backgrounds';
+import Header from '../header/Header';
 
 const Settings = () => {
     return (
@@ -25,9 +27,11 @@ const Settings = () => {
 export default Settings;
 
 const Wrapper = styled.div`
-    width: 100%;
     background-image: url(${background_settings});
-    padding: 100px 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
 `;
 
 const PositionLogin = styled.div`
@@ -38,16 +42,12 @@ const SettingsName = styled.h1`
     font-size: 48px;
     color: #ceb7ff;
     text-align: left;
-    
-    padding: 0.5em 0 0 1.2em;
+    margin-left: 1.2em;
 `;
 
 const Backgrounds = styled.div`
     background-color: #0000008f;
     backdrop-filter: blur(10px);
     border-radius: 1em;
-    margin: 140px auto;
-    
     width: 60%;
-    
 `;
