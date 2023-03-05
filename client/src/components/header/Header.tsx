@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { logo, avatar, coinLogo } from '../../assets/img/svgIcons';
+import Menu from './menu/Menu';
 
 interface IProps {
     userName: string;
@@ -9,31 +10,47 @@ interface IProps {
 }
 
 const Header = ({ userName, balance }: IProps) => {
+    const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false)
+
     return (
-        <HeaderMain>
-            <LogoContainer>
-                <NavLink to='/'><Logo src={logo} /></NavLink>
-            </LogoContainer>
-            <FlexContainer>
-                <UserInfoContainer>
-                    <Name>{userName}</Name>
-                    <ContainerBalance>
-                        <LogoCoin src={coinLogo} alt="" />
-                        <UserBalance>{balance} - coin</UserBalance>
-                    </ContainerBalance>
-                </UserInfoContainer>
-                <NavLink to='/profile'><UserAvatar src={avatar} /></NavLink>
-            </FlexContainer>
-        </HeaderMain>
+        <Container>
+            <HeaderMain>
+                <LogoContainer>
+                    <NavLink to="/">
+                        <Logo src={logo} />
+                    </NavLink>
+                </LogoContainer>
+                <FlexContainer>
+                    <UserInfoContainer>
+                        <Name>{userName}</Name>
+                        <ContainerBalance>
+                            <LogoCoin src={coinLogo} alt="" />
+                            <UserBalance>{balance} - coin</UserBalance>
+                        </ContainerBalance>
+                    </UserInfoContainer>
+                    <div onClick={()=>setIsVisibleMenu(!isVisibleMenu)}>
+                        <UserAvatar src={avatar} />
+                    </div>
+                </FlexContainer>
+            </HeaderMain>
+            <Menu isVisible={isVisibleMenu} />
+        </Container>
     );
 };
 
 export default Header;
 
-const HeaderMain = styled.div`
+const Container = styled.header`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
+`
+
+const HeaderMain = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,16 +58,6 @@ const HeaderMain = styled.div`
     width: 100%;
     height: 85px;
     background: rgba(255, 255, 255, 0.322);
-    z-index: 1000;
-    &:before {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        z-index: -1;
-    }
 `;
 
 const UserAvatar = styled.img`

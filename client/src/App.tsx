@@ -17,7 +17,8 @@ const App = () => {
 
     return (
         <>
-            {user.userInfo.isAuthorize && (
+            <Header balance={1000} userName={"Ilya"} />
+            {/* {user.userInfo.isAuthorize && (
                 <Header balance={user.userInfo.balance} userName={user.userInfo.login} />
             )}
             <Routes>
@@ -38,7 +39,7 @@ const App = () => {
                     </> 
                 )}
             </Routes>
-            <Foooter />
+            <Foooter /> */}
         </>
     );
 };
