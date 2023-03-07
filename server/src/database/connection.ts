@@ -13,7 +13,6 @@ const db_config: mysql.PoolOptions = {
 const pool = mysql.createPool(db_config);
 
 export async function query(sql: string, params: any) {
-    // const connection = await mysql.createConnection(db_config);
     const [results] = await pool.execute(sql, params);
 
     return results;

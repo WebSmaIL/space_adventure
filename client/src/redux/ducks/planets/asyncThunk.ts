@@ -1,14 +1,12 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IPlanet } from "./interfaces";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IPlanet } from './interfaces';
+import { API } from '../../../api';
 
 export const fetchPlanets = createAsyncThunk<
     IPlanet[],
     undefined,
     { rejectValue: string }
->(
-    'planets/fetchPlanets',
-    async () => {
-        const res = await fetch('https://websmail.store/api/planets');
-        
-        return await res.json();
+>('planets/fetchPlanets', async () => {
+    const response = await API.get('planets');
+    return response.data;
 });

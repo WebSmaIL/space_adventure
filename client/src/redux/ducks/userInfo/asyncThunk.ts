@@ -1,41 +1,37 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import {IUser, IUserRegister} from './interfaces'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IUser, IUserLogin, IUserRegister, MyKnownError } from './interfaces';
+import { API } from '../../../api';
 
-interface MyKnownError {
-    message: string;
-}
+export const fetchRegister = createAsyncThunk<
+    IUser,
+    IUserRegister,
+    { rejectValue: MyKnownError }
+>('user/fetchRegister', async (user, thunkApi) => {
+    const res = await API.post('users', {
+        email: user.email,
+        login: user.login,
+        password: user.password,
+    });
 
-export const fetchRegister = createAsyncThunk<IUser, IUserRegister, { rejectValue: MyKnownError }>(
-    'user/fetchRegister',
-    async (user, thunkApi) => {
-        const res = await fetch('https://websmail.store/api/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(user)
-          });
-        
-        if(res.status === 500) {
-            return thunkApi.rejectWithValue((await res.json()) as MyKnownError);
-        } else {
-            return await res.json();
-        }
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+    }
 });
 
-interface IUserLogin {
-  login: string,
-  password: string
-}
+export const fetchLogin = createAsyncThunk<
+    IUser,
+    IUserLogin,
+    { rejectValue: MyKnownError }
+>('user/fetchLogin', async (info, thunkApi) => {
+    const res = await API.get(
+        `users/getbylogin/login:${info.login}&password:${info.password}`
+    );
 
-export const fetchLogin = createAsyncThunk<IUser, IUserLogin, { rejectValue: MyKnownError }>(
-    'user/fetchLogin',
-    async (info, thunkApi) => {
-        const res = await fetch(`https://websmail.store/api/users/getbylogin/login:${info.login}&password:${info.password}`);
-        
-        if(res.status === 500) {
-            return thunkApi.rejectWithValue((await res.json()) as MyKnownError);
-        } else {
-            return await res.json();
-        }
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+    }
 });
