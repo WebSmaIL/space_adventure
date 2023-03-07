@@ -21,3 +21,12 @@ export interface IUserRegister {
     login: string;
     password: string;
 }
+
+export interface MyKnownError {
+    message: string;
+}
+
+export interface IUserLogin {
+    login: string,
+    password: string
+  }

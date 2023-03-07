@@ -28,8 +28,6 @@ const userSlice = createSlice({
             state.userInfo.level = 0
             state.userInfo.balance = 0
             state.userInfo.isAuthorize = false;
-
-            console.log(state.userInfo.id)
         },
     },
     extraReducers: (builder) => {
