@@ -1,27 +1,62 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components'
-import {exit_icon, profile_icon, settings_header_icon} from '../../../assets/img/svgIcons'
+import styled from 'styled-components';
+import {
+    exit_icon,
+    profile_icon,
+    settings_header_icon,
+} from '../../../assets/img/svgIcons';
+import { useAppDispatch } from '../../../hooks';
+import { logOut } from '../../../redux/ducks/userInfo';
 
 interface IProps {
     isVisible: boolean;
+    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Menu = ({isVisible}: IProps) => {
-  return (
-    <MenuContainer isVisible={isVisible}>
-        <MenuSpan to="/profile"><Icon src={profile_icon} />Мой профиль</MenuSpan>
-        <MenuSpan to="/profile/settings"><Icon src={settings_header_icon} />Настройки</MenuSpan>
-        <MenuSpan to="/"><Icon src={exit_icon} />Выход</MenuSpan>
-    </MenuContainer>
-  )
-}
+const Menu = ({ isVisible, setIsVisible }: IProps) => {
+    const dispatch = useAppDispatch()
 
-export default Menu
 
-const MenuContainer = styled.div<{isVisible: boolean}>`
+    return (
+        <MenuContainer isVisible={isVisible}>
+            <MenuLink
+                onClick={() => {
+                    setIsVisible(!isVisible);
+                }}
+                to="/profile"
+            >
+                <Icon src={profile_icon} />
+                Мой профиль
+            </MenuLink>
+            <MenuLink
+                onClick={() => {
+                    setIsVisible(!isVisible);
+                }}
+                to="/profile/settings"
+            >
+                <Icon src={settings_header_icon} />
+                Настройки
+            </MenuLink>
+            <MenuLink
+                onClick={() => {
+                    setIsVisible(!isVisible);
+                    dispatch(logOut());
+                }}
+                to="/"
+            >
+                <Icon src={exit_icon} />
+                Выход
+            </MenuLink>
+        </MenuContainer>
+    );
+};
+
+export default Menu;
+
+const MenuContainer = styled.div<{ isVisible: boolean }>`
     align-self: flex-end;
-    display: ${props => props.isVisible ? 'flex' : 'none'};
+    display: ${(props) => (props.isVisible ? 'flex' : 'none')};
     width: 250px;
 
     overflow-y: hidden;
@@ -30,7 +65,7 @@ const MenuContainer = styled.div<{isVisible: boolean}>`
     background: rgba(255, 255, 255, 0.322);
     border-radius: 0 0 15px 15px;
 
-    animation: menuAnim .5s ease alternate forwards;
+    animation: menuAnim 0.5s ease alternate forwards;
 
     @keyframes menuAnim {
         from {
@@ -40,9 +75,9 @@ const MenuContainer = styled.div<{isVisible: boolean}>`
             height: 215px;
         }
     }
-`
+`;
 
-const MenuSpan = styled(NavLink)`
+const MenuLink = styled(NavLink)`
     display: flex;
     align-items: center;
     padding: 20px;
@@ -59,10 +94,10 @@ const MenuSpan = styled(NavLink)`
     &:hover {
         background: rgba(255, 255, 255, 0.1);
     }
-`
+`;
 
 const Icon = styled.img`
     width: 32px;
     height: 32px;
     margin-right: 5px;
-`
+`;

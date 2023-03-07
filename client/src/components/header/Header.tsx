@@ -33,7 +33,7 @@ const Header = ({ userName, balance }: IProps) => {
                     </div>
                 </FlexContainer>
             </HeaderMain>
-            <Menu isVisible={isVisibleMenu} />
+            <Menu setIsVisible={setIsVisibleMenu} isVisible={isVisibleMenu} />
         </Container>
     );
 };
