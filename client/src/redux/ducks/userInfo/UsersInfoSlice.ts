@@ -21,6 +21,16 @@ const userSlice = createSlice({
         zeroingError: (state) => {
             state.errorMessage = undefined;
         },
+        logOut: (state) => {
+            state.userInfo.id = ''
+            state.userInfo.email = ''
+            state.userInfo.login = ''
+            state.userInfo.level = 0
+            state.userInfo.balance = 0
+            state.userInfo.isAuthorize = false;
+
+            console.log(state.userInfo.id)
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -67,6 +77,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { zeroingError } = userSlice.actions;
+export const { zeroingError, logOut } = userSlice.actions;
 
 export default userSlice.reducer;
