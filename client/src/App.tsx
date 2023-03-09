@@ -10,6 +10,7 @@ import Home from './components/home/Home';
 import Foooter from './components/footer/Footer';
 import Settings from './components/settings/Settings';
 import PersonalAccount from './components/personalAccount/PersonalAccount';
+import MiniGame from './components/minigame/MiniGame';
 
 const App = () => {
     const user = useAppSelector(getUserInfo);
@@ -31,6 +32,7 @@ const App = () => {
                     <>
                         <Route path="/profile" element={<PersonalAccount />} />
                         <Route path="/profile/settings" element={<Settings />} />
+                        <Route path="/minigame" element={<MiniGame />} />
                         <Route
                             path="/leaderboard/:table"
                             element={<Leaderboard />}
