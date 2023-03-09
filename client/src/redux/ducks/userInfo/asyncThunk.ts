@@ -7,7 +7,6 @@ import {
     MyKnownError,
 } from './interfaces';
 import { API } from '../../../api';
-import axios from 'axios';
 
 export const fetchRegister = createAsyncThunk<
     IUser,
@@ -52,7 +51,7 @@ export const uploadAvatar = createAsyncThunk<
     data.append('file', info.img);
     data.append('userId', info.id);
 
-    const res = await axios.post(`http://localhost:8000/api/users/upload`, data);
+    const res = await API.post(`users/upload`, data);
 
     if (res.status === 500) {
         return thunkApi.rejectWithValue((await res.data) as MyKnownError);

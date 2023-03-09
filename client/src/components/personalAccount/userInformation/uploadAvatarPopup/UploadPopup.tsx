@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import AvatarEditor from 'react-avatar-editor';
-import { plus_icon, minus_icon } from '../../../../assets/img/svgIcons';
+import { plus_icon, minus_icon, close } from '../../../../assets/img/svgIcons';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { getUserInfo } from '../../../../redux/ducks/userInfo';
 import { uploadAvatar } from '../../../../redux/ducks/userInfo/asyncThunk';
 
 interface IProps {
-    uploadedFile: File | null;
+    uploadedFile: File | null
+	setUploadedFile: React.Dispatch<React.SetStateAction<File | null>>
 }
 
-const UploadPopup = ({ uploadedFile }: IProps) => {
+const UploadPopup = ({ uploadedFile, setUploadedFile }: IProps) => {
     const [src, setSrc] = useState<string>('');
     const editor = useRef<AvatarEditor | null>(null);
     const userInfo = useAppSelector(getUserInfo);
@@ -119,12 +120,36 @@ const UploadPopup = ({ uploadedFile }: IProps) => {
                     </Setting>
                 </SettingsWrapper>
             </Content>
-            <button onClick={handleSaveImage}>save image</button>
+            <StyledButton onClick={handleSaveImage}>Сохранить</StyledButton>
+			<CloseButton onClick={() => {setUploadedFile(null)}} />
         </UploadContainer>
     );
 };
 
 export default UploadPopup;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    background: none;
+    background-image: url(${close});
+    background-size: contain;
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+`;
 
 const UploadContainer = styled.div`
     display: flex;
@@ -220,4 +245,60 @@ const UploadedImage = styled(AvatarEditor)`
     margin: 0 auto;
     max-width: 100%;
     max-height: 100%;
+`;
+
+const StyledButton = styled.button`
+    min-width: 300px;
+
+    display: inline-block;
+    padding: 20px 40px;
+
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 40px;
+    line-height: 1.1;
+    color: #ceb7ff;
+    font-weight: 500;
+    text-decoration: none;
+
+    background: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    transition: all 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50px;
+        border: 5px solid transparent;
+        background: linear-gradient(
+                180deg,
+                rgba(206, 183, 255, 1),
+                rgba(115, 102, 255, 0.5)
+            )
+            border-box;
+        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+
+        transition: all 0.3s ease;
+    }
+
+    &:focus,
+    &:hover {
+        outline: none;
+        box-shadow: 5px 5px 10px rgba(115, 102, 255, 0.5);
+
+        &::before {
+            transform: scale(1.05);
+        }
+    }
 `;

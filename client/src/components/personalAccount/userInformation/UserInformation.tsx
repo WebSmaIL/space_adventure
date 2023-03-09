@@ -31,7 +31,7 @@ const UserInformation = () => {
             
             <Settings to={'/profile/settings'} />
 
-            {uploadedFile && <UploadPopup uploadedFile={uploadedFile} />}
+            {uploadedFile && <UploadPopup setUploadedFile={setUploadedFile} uploadedFile={uploadedFile} />}
         </Container>
     );
 };
