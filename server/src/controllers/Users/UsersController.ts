@@ -9,9 +9,11 @@ import {
     UPDATE_USER_BALANCE,
     UPDATE_USER_EMAIL,
     GET_BY_LOGIN,
+    UPDATE_USER_AVATAR,
 } from '../../database/queries';
 import { toObject } from '../../helpers';
 import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs';
 
 class UsersController {
     async getUsers(req: Request, res: Response, tableName: string) {
@@ -43,20 +45,25 @@ class UsersController {
 
     async getUserByLogin(req: Request, res: Response) {
         try {
-            const { login, password} = req.params;
-        
-            if (!login) throw Error();
-            query(GET_BY_LOGIN, [login.split(":")[1]]).then((result) => {
-                try {
-                    const correctlyPass = JSON.parse(JSON.stringify(result))[0].password;
+            const { login, password } = req.params;
 
-                    if (password.split(":")[1] === correctlyPass) {  
-                        res.json(JSON.parse(JSON.stringify(result))[0]).status(200);
+            if (!login) throw Error();
+            query(GET_BY_LOGIN, [login.split(':')[1]]).then((result) => {
+                try {
+                    const correctlyPass = JSON.parse(JSON.stringify(result))[0]
+                        .password;
+
+                    if (password.split(':')[1] === correctlyPass) {
+                        res.json(JSON.parse(JSON.stringify(result))[0]).status(
+                            200
+                        );
                     } else {
-                        throw Error()
+                        throw Error();
                     }
                 } catch (error) {
-                    res.status(500).json({message:"Не верный логин или пароль"});
+                    res.status(500).json({
+                        message: 'Не верный логин или пароль',
+                    });
                 }
             });
         } catch (error) {
@@ -97,7 +104,9 @@ class UsersController {
 
                     query(GET_BY_ID('users'), [id])
                         .then((result) => {
-                            res.status(200).json(JSON.parse(JSON.stringify(result))[0]);
+                            res.status(200).json(
+                                JSON.parse(JSON.stringify(result))[0]
+                            );
                         })
                         .catch((error) => {
                             res.status(500).json({
@@ -158,6 +167,38 @@ class UsersController {
                 .catch((error) =>
                     res.status(500).json({ message: 'User already exists' })
                 );
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
+    async addUserAvatar(req: Request, res: Response) {
+        try {
+            const file = req.body.file;
+            const uId = req.body.userId;
+            const base64Data = file.replace(/^data:image\/png;base64,/, '');
+
+            if (file && uId) {
+                fs.writeFile(
+                    `./files/${uId}.png`,
+                    base64Data,
+                    'base64url',
+                    function (err) {
+                        if (err) {
+                            res.status(500).json('Incorrect request');
+                        }
+                    }
+                );
+                query(UPDATE_USER_AVATAR, [`${uId}.png`, uId])
+                    .then((result) => {
+                        res.status(200).json({
+                            avatar_src: `${uId}.png`,
+                        });
+                    })
+                    .catch((error) =>
+                        res.status(500).json({ message: 'User already exists' })
+                    );
+            }
         } catch (error) {
             res.status(500).json('Incorrect request');
         }

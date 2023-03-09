@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { logo, avatar, coinLogo } from '../../assets/img/svgIcons';
+import { logo, coinLogo } from '../../assets/img/svgIcons';
+import avatar_icon from '../../assets/img/pngIcons/profile.png';
 import Menu from './menu/Menu';
+import { useAppSelector } from '../../hooks';
+import { getUserInfo } from '../../redux/ducks/userInfo';
 
 interface IProps {
     userName: string;
@@ -10,7 +13,19 @@ interface IProps {
 }
 
 const Header = ({ userName, balance }: IProps) => {
-    const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false)
+    const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
+    const user = useAppSelector(getUserInfo);
+
+    const [currentAvatar, setCurrentAvatar] = useState('');
+    useEffect(() => {
+        if (user.userInfo.avatar_src) {
+            setCurrentAvatar(
+                `https://websmail.store/${user.userInfo.avatar_src}?r=${Math.random()}`
+            )
+        } else {
+            setCurrentAvatar(avatar_icon);
+        }
+    }, [user]);
 
     return (
         <Container>
@@ -28,8 +43,8 @@ const Header = ({ userName, balance }: IProps) => {
                             <UserBalance>{balance} - coin</UserBalance>
                         </ContainerBalance>
                     </UserInfoContainer>
-                    <div onClick={()=>setIsVisibleMenu(!isVisibleMenu)}>
-                        <UserAvatar src={avatar} />
+                    <div onClick={() => setIsVisibleMenu(!isVisibleMenu)}>
+                        <UserAvatar src={currentAvatar} />
                     </div>
                 </FlexContainer>
             </HeaderMain>
@@ -48,7 +63,7 @@ const Container = styled.header`
     top: 0;
     left: 0;
     z-index: 1000;
-`
+`;
 
 const HeaderMain = styled.div`
     display: flex;
@@ -61,7 +76,11 @@ const HeaderMain = styled.div`
 `;
 
 const UserAvatar = styled.img`
-    margin: 0 40px 0 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    margin: 0 30px 0 10px;
     transition: transform 500ms ease;
     &:hover {
         cursor: pointer;

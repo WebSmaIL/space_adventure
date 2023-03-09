@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { spaceX } from '../../../assets/img/svgIcons';
 import Button from '../../../assets/uikit/Button';
@@ -7,12 +7,15 @@ import StatisticUser from './statisticUser/StatisticUser';
 import UserInfo from './userInfo/UserInfo';
 import { NavLink } from 'react-router-dom';
 import settings from '../../../assets/img/svgIcons/settings_icon.svg';
+import UploadPopup from './uploadAvatarPopup/UploadPopup';
 
 const UserInformation = () => {
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null)
+
     return (
         <Container>
             <ContainerUserInfo>
-                <UserInfo />
+                <UserInfo setUploadedFile={setUploadedFile} />
             </ContainerUserInfo>
             <ContainerAchievementsUser>
                 <Achievements />
@@ -27,6 +30,8 @@ const UserInformation = () => {
             </ContainerBackground>
             
             <Settings to={'/profile/settings'} />
+
+            {uploadedFile && <UploadPopup setUploadedFile={setUploadedFile} uploadedFile={uploadedFile} />}
         </Container>
     );
 };
@@ -55,6 +60,8 @@ const Settings = styled(NavLink)`
 const Container = styled.div`
     position: relative;
     margin: 40px auto 0;
+
+    overflow-y: hidden;
 
     display: flex;
     justify-content: center;
