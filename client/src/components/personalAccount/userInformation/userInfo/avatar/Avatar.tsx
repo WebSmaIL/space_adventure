@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { edit_icon } from '../../../../../assets/img/svgIcons';
 import avatar_icon from '../../../../../assets/img/pngIcons/profile.png';
@@ -11,11 +11,22 @@ interface IProps {
 
 const Avatar = ({setUploadedFile}: IProps) => {
     const filePicker = useRef<HTMLInputElement>(null);
-    const user = useAppSelector(getUserInfo)
+    const user = useAppSelector(getUserInfo);
+
+    const [currentAvatar, setCurrentAvatar] = useState('');
+    useEffect(() => {
+        if (user.userInfo.avatar_src) {
+            setCurrentAvatar(
+                `https://websmail.store/${user.userInfo.avatar_src}?r=${Math.random()}`
+            )
+        } else {
+            setCurrentAvatar(avatar_icon);
+        }
+    }, [user]);
 
     return (
         <AvatarContainer>
-            <UserAvatar src={user.userInfo.avatar_src ? `http://localhost:8000/${user.userInfo.avatar_src}` : avatar_icon} />
+            <UserAvatar src={currentAvatar} />
             <Button onClick={() => filePicker.current?.click()}>
                 <img src={edit_icon} alt="" />
             </Button>

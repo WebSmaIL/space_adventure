@@ -17,11 +17,10 @@ const Header = ({ userName, balance }: IProps) => {
     const user = useAppSelector(getUserInfo);
 
     const [currentAvatar, setCurrentAvatar] = useState('');
-
     useEffect(() => {
         if (user.userInfo.avatar_src) {
             setCurrentAvatar(
-                `http://localhost:8000/${user.userInfo.avatar_src}?r`
+                `https://websmail.store/${user.userInfo.avatar_src}?r=${Math.random()}`
             )
         } else {
             setCurrentAvatar(avatar_icon);
