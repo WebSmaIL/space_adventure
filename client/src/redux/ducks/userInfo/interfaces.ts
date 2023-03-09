@@ -4,6 +4,7 @@ export interface IUser {
     login: string;
     balance: number;
     level: number;
+    avatar_src: string;
 }
 
 export interface IUserState extends IUser {
@@ -30,3 +31,8 @@ export interface IUserLogin {
     login: string,
     password: string
   }
+
+export interface IUploadAvatar {
+    img: string;
+    id: string;
+}

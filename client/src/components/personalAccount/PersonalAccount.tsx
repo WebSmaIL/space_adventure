@@ -17,4 +17,4 @@ const Wrapper = styled.div`
     width: 100%;
     background-image: url(${background_personal_account});
     padding: 100px 0;
-`
+`;

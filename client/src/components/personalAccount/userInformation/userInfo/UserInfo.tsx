@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { avatar, coinLogo } from '../../../../assets/img/svgIcons';
+import { coinLogo } from '../../../../assets/img/svgIcons';
 import { useAppSelector } from '../../../../hooks';
 import { getUserInfo } from '../../../../redux/ducks/userInfo';
-const UserInfo = () => {
+import Avatar from './avatar/Avatar';
+
+interface IProps {
+    setUploadedFile: React.Dispatch<React.SetStateAction<File | null>>
+}
+
+const UserInfo = ({setUploadedFile}: IProps) => {
     const user = useAppSelector(getUserInfo);
     return (
         <>
             <Container>
-                <UserAvatar src={avatar} />
+                <Avatar setUploadedFile={setUploadedFile} />
                 <ContainerInfo>
                     <UserName>{user.userInfo.login}</UserName>
                     <Level>Уровень - {user.userInfo.level}</Level>
@@ -28,11 +34,6 @@ export default UserInfo;
 
 const Container = styled.div`
     display: flex;
-`;
-
-const UserAvatar = styled.img`
-    width: 200px;
-    height: 200px;
 `;
 
 const ContainerInfo = styled.div`

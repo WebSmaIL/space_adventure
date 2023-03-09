@@ -35,4 +35,8 @@ router.put('/users/update_email', (req: Request, res: Response) =>
     UsersController.updateUserEmail(req, res, 'users')
 );
 
+router.post('/users/upload', (req: Request, res: Response) =>
+    UsersController.addUserAvatar(req, res)
+);
+
 export default router;
