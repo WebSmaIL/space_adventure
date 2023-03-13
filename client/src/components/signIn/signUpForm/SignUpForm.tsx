@@ -62,7 +62,7 @@ const SignUpForm = ({ isRegister, setIsRegister }: IProps) => {
                         <Input
                             registerObj={{
                                 ...register('UserName', {
-                                    required: true,
+                                    required: true,  
                                     minLength: 3,
                                     maxLength: 10,
                                 }),

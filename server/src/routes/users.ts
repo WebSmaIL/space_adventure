@@ -24,12 +24,20 @@ router.delete('/users/:id', (req: Request, res: Response) =>
     UsersController.deleteUserById(req, res, 'users')
 );
 
-router.put('/users/update_login_pass', (req: Request, res: Response) =>
-    UsersController.updateUserLoginPass(req, res, 'users')
+router.put('/users/update_login', (req: Request, res: Response) =>
+    UsersController.updateUserLogin(req, res, 'users')
+);
+
+router.put('/users/update_password', (req: Request, res: Response) =>
+    UsersController.updateUserPassword(req, res, 'users')
 );
 
 router.put('/users/update_balance', (req: Request, res: Response) =>
     UsersController.updateUserBalance(req, res, 'users')
+);
+
+router.put('/users/update_level', (req: Request, res: Response) =>
+    UsersController.updateUserLevel(req, res, 'users')
 );
 
 router.put('/users/update_email', (req: Request, res: Response) =>

@@ -6,12 +6,17 @@ import {
     fetchUpdateCoins,
     fetchUpdateScore,
     uploadAvatar,
+    updateLogin,
+    updateLevel,
+    updatePassword,
+    updateEmail
 } from './asyncThunk';
 const initialState: IState = {
     userInfo: {
         id: '',
         email: '',
         login: '',
+        password: '',
         isAuthorize: false,
         balance: 0,
         level: 0,
@@ -95,6 +100,33 @@ const userSlice = createSlice({
                 state.errorMessage = action.payload?.message;
                 state.isLoading = false;
             })
+            // Update login 
+            
+            .addCase(updateLogin.pending, (state) => {
+                state.isLoading = true;
+  
+            })
+            .addCase(updateLogin.fulfilled, (state, action) => {
+                state.userInfo.login = action.payload.login;
+                state.isLoading = false;
+            })
+            .addCase(updateLogin.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            })
+            // UPDATE LEVEL
+            .addCase(updateLevel.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateLevel.fulfilled, (state, action) => {
+                state.userInfo.level = action.payload.level;
+                state.userInfo.balance = action.payload.balance;
+                state.isLoading = false;
+            })
+            .addCase(updateLevel.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            })
 
             // UPDATE BALANCE
             .addCase(fetchUpdateCoins.pending, (state) => {
@@ -109,6 +141,30 @@ const userSlice = createSlice({
                 state.isLoading = false;
             })
 
+            // Update email
+            .addCase(updateEmail.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateEmail.fulfilled, (state, action) => {
+                state.userInfo.email = action.payload.email;
+                state.isLoading = false;
+            })
+            .addCase(updateEmail.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            })
+            // Update password
+            .addCase(updatePassword.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updatePassword.fulfilled, (state, action) => {
+                state.userInfo.password = action.payload.password;
+                state.isLoading = false;
+            })
+            .addCase(updatePassword.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            })  
             // UPDATE BALANCE
             .addCase(fetchUpdateScore.pending, (state) => {
                 state.isLoading = true;

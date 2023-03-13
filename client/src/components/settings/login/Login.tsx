@@ -1,19 +1,40 @@
-import React from 'react';
+
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch,useAppSelector } from '../../../hooks';
+import { getUserInfo } from '../../../redux/ducks/userInfo';
+import { updateLogin } from '../../../redux/ducks/userInfo/asyncThunk';
+
+
 
 
 const Login = () => {
-    return (
-        <div>
+        
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const userInfo = useAppSelector(getUserInfo);
+    const dispatch = useAppDispatch();
+
+ 
+        const handleSaveLogin = () => {
+            if (inputRef.current)
+            
+            dispatch(updateLogin({
+                id: userInfo.userInfo.id, login: inputRef.current.value
+                
+            }));
+        };
+         
+        return (
             <div>
-                <Caption>Сменить Логин</Caption>
-                <Line></Line>
-                <Input placeholder='Новый логин'></Input>
-                <Button>Сменить Логин</Button>
+                <div>
+                    <Caption>Сменить Логин</Caption>
+                    <Line></Line>
+                    <Input ref={inputRef} placeholder='Новый логин'></Input>
+                    <Button onClick={handleSaveLogin}>Сменить</Button>
+                </div>  
             </div>
-        </div>
-    );
-};
+        );
+    };
 
 export default Login;
 

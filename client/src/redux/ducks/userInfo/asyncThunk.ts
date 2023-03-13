@@ -3,10 +3,14 @@ import {
     IUpdateCoins,
     IUpdateScore,
     IUploadAvatar,
+    IUpUserLogin,
     IUser,
     IUserLogin,
     IUserRegister,
     MyKnownError,
+    IUpUserLevel,
+    IUpUserMail,
+    IUpUserPassword,
 } from './interfaces';
 import { API } from '../../../api';
 import axios from 'axios';
@@ -63,6 +67,89 @@ export const uploadAvatar = createAsyncThunk<
     }
 });
 
+export const updateLogin = createAsyncThunk<
+
+    IUser,
+    IUpUserLogin,
+    { rejectValue: MyKnownError }
+>('user/updateLogin', async (info, thunkApi) => {
+    
+    const res = await API.put(`users/update_login`, {
+        userId: info.id,
+        login: info.login
+    });
+    
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+        
+    }
+});
+
+
+
+
+export const updateLevel = createAsyncThunk<
+
+    IUser,
+    IUpUserLevel,
+    { rejectValue: MyKnownError }
+>('users/updateLevel', async (info, thunkApi) => {
+    
+    const res = await API.put(`users/update_level`, {
+        userId: info.id,
+        level: info.level,
+        balance: info.balance
+    });
+    
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+        
+    }
+});
+
+export const updateEmail = createAsyncThunk<
+
+    IUser,
+    IUpUserMail,
+    { rejectValue: MyKnownError }
+>('users/updateEmail', async (info, thunkApi) => {
+    
+    const res = await API.put(`users/update_email`, {
+        userId: info.id,
+        email: info.email,
+    });
+    
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+        
+    }
+});
+
+export const updatePassword = createAsyncThunk<
+
+    IUser,
+    IUpUserPassword,
+    { rejectValue: MyKnownError }
+>('users/updatePassword', async (info, thunkApi) => {
+    
+    const res = await API.put(`users/update_password`, {
+        userId: info.id,
+        password: info.password,
+    });
+    
+    if (res.status === 500) {
+        return thunkApi.rejectWithValue((await res.data) as MyKnownError);
+    } else {
+        return await res.data;
+        
+    }
+});
 export const fetchUpdateCoins = createAsyncThunk<
     IUser,
     IUpdateCoins,
