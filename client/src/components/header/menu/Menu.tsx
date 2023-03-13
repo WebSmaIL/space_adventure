@@ -63,6 +63,7 @@ const MenuContainer = styled.div<{ isVisible: boolean }>`
     flex-direction: column;
 
     background: rgba(255, 255, 255, 0.322);
+    backdrop-filter: blur(10px);
     border-radius: 0 0 15px 15px;
 
     animation: menuAnim 0.5s ease alternate forwards;

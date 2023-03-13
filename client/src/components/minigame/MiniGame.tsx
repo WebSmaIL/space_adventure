@@ -23,9 +23,7 @@ const Minigame = styled.div`
     width: 800px;
     height: 600px;
     position: relative;
-    background-color: #636363;
+    background-color: #63636399;
     margin: 0 auto;
-    border-radius: 25px;
-    
+    border: 5px solid #CEB7FF;   
 `
-
