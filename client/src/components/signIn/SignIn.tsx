@@ -42,6 +42,7 @@ const Container = styled.div`
     margin: 0 auto 0 auto;
     padding: 20px 100px;
     background: #000000bd;
+    backdrop-filter: blur(10px);
     z-index: 3;
 
     font-family: sans-serif;

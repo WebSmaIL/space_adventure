@@ -9,7 +9,7 @@ export const UPDATE_USER_LEVEL = `UPDATE users SET level=?, balance=? WHERE id=?
 
 export const GET_LEADERS = (tableName: string, startNumber: number, limitNumber: number) => `SELECT * FROM ${tableName} ORDER BY score DESC LIMIT ${startNumber}, ${limitNumber}`;
 export const GET_USER_PRESENCE_BY_ID = (tableName: string) => `SELECT * FROM ${tableName} WHERE user_id=?`;
-export const ADD_LEADER = (tableName: string) => `INSERT INTO ${tableName} (user_id, score) VALUES (?, ?)`;
+export const ADD_LEADER = (tableName: string) => `INSERT INTO ${tableName} (user_id, score, login) VALUES (?, ?, ?)`;
 export const UPDATE_LEADER= (tableName: string) => `UPDATE ${tableName} SET score=? WHERE user_id=?`;
 export const GET_ALL = (tableName: string) => `SELECT * FROM ${tableName}`;
 export const GET_BY_ID = (tableName: string) => `SELECT * FROM ${tableName} WHERE id=?`;

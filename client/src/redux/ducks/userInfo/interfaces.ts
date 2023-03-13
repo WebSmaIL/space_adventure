@@ -37,6 +37,7 @@ export interface IUploadAvatar {
     img: string;
     id: string;
 }
+
 export interface IUpUserLogin {
     login: string;
     id: string;
@@ -57,5 +58,18 @@ export interface IUpUserMail {
 export interface IUpUserPassword {
     id: string;
     password: string;
-    
+ }
+
+
+
+
+export interface IUpdateScore {
+    score: number,
+    userid: string,
+    leadertbl: string
+}
+
+export interface IUpdateCoins {
+    coins: number,
+    userid: string,
 }

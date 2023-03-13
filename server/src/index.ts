@@ -7,6 +7,7 @@ import {
     planetsRouter,
     userRouter,
     spaceshipsRouter,
+    minigameRouter,
 } from './routes';
 import fileUpload from 'express-fileupload';
 
@@ -24,10 +25,12 @@ app.use('/api', userRouter);
 app.use('/api', leadersRouter);
 app.use('/api', planetsRouter);
 app.use('/api', spaceshipsRouter);
+app.use('/api', minigameRouter);
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    
 
     // Request methods you wish to allow
     res.setHeader(

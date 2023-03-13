@@ -1,6 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IState } from './interfaces';
-import { fetchLogin, fetchRegister, uploadAvatar, updateLogin, updateLevel, updatePassword, updateEmail } from './asyncThunk';
+import {
+    fetchLogin,
+    fetchRegister,
+    fetchUpdateCoins,
+    fetchUpdateScore,
+    uploadAvatar,
+    updateLogin,
+    updateLevel,
+    updatePassword,
+    updateEmail
+} from './asyncThunk';
 const initialState: IState = {
     userInfo: {
         id: '',
@@ -10,7 +20,7 @@ const initialState: IState = {
         isAuthorize: false,
         balance: 0,
         level: 0,
-        avatar_src: ''
+        avatar_src: '',
     },
     isLoading: false,
     errorMessage: undefined,
@@ -24,13 +34,13 @@ const userSlice = createSlice({
             state.errorMessage = undefined;
         },
         logOut: (state) => {
-            state.userInfo.id = ''
-            state.userInfo.email = ''
-            state.userInfo.login = ''
-            state.userInfo.level = 0
-            state.userInfo.balance = 0
+            state.userInfo.id = '';
+            state.userInfo.email = '';
+            state.userInfo.login = '';
+            state.userInfo.level = 0;
+            state.userInfo.balance = 0;
             state.userInfo.isAuthorize = false;
-            state.userInfo.avatar_src = ''
+            state.userInfo.avatar_src = '';
         },
     },
     extraReducers: (builder) => {
@@ -61,7 +71,7 @@ const userSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchLogin.fulfilled, (state, action) => {
-                console.log(action.payload)
+                console.log(action.payload);
                 state.userInfo.id = action.payload.id;
                 state.userInfo.email = action.payload.email;
                 state.userInfo.login = action.payload.login;
@@ -118,6 +128,19 @@ const userSlice = createSlice({
                 state.isLoading = false;
             })
 
+            // UPDATE BALANCE
+            .addCase(fetchUpdateCoins.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchUpdateCoins.fulfilled, (state, action) => {
+                state.userInfo.balance = action.payload?.balance;
+                state.isLoading = false;
+            })
+            .addCase(fetchUpdateCoins.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            })
+
             // Update email
             .addCase(updateEmail.pending, (state) => {
                 state.isLoading = true;
@@ -141,8 +164,19 @@ const userSlice = createSlice({
             .addCase(updatePassword.rejected, (state, action) => {
                 state.errorMessage = action.payload?.message;
                 state.isLoading = false;
+            })  
+            // UPDATE BALANCE
+            .addCase(fetchUpdateScore.pending, (state) => {
+                state.isLoading = true;
             })
-    },      
+            .addCase(fetchUpdateScore.fulfilled, (state, action) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchUpdateScore.rejected, (state, action) => {
+                state.errorMessage = action.payload?.message;
+                state.isLoading = false;
+            });
+    },
 });
 
 export const { zeroingError, logOut } = userSlice.actions;
