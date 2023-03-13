@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { background_leaders } from '../../assets/img/backgrounds';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchLeaders } from '../../redux/ducks/leaderboard/asyncThunk';
-import { getLeaderBoard } from '../../redux/ducks/leaderboard/selectors';
 import Leaders from './leaders/Leaders';
 
 const Leaderboard = () => {

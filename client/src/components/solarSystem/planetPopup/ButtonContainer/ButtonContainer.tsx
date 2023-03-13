@@ -12,7 +12,6 @@ const ButtonContainer = ({minigame_id, usersleader_id}: IProps) => {
     return (
         <Buttons>
             <Button to={'/minigame'} state={{leader_table: usersleader_id, minigame_id }} >Играть</Button>
-            {/* <Button to={'/leaderboard'} state={{table: usersleader_id }} >Таблица лидеров</Button> */}
         </Buttons>
     );
 };

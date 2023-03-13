@@ -13,7 +13,6 @@ import {
     IUpUserPassword,
 } from './interfaces';
 import { API } from '../../../api';
-import axios from 'axios';
 
 export const fetchRegister = createAsyncThunk<
     IUser,
@@ -155,7 +154,7 @@ export const fetchUpdateCoins = createAsyncThunk<
     IUpdateCoins,
     { rejectValue: MyKnownError }
 >('minigames/fetchUpdateCoins', async (gameinfo, thunkApi) => {
-    const response = await axios.post('http://localhost:8000/api/users/coinsupdate', gameinfo );
+    const response = await API.post('users/coinsupdate', gameinfo );
     if (response.status === 500) {
         return thunkApi.rejectWithValue((await response.data) as MyKnownError);
     } else {
@@ -168,7 +167,7 @@ export const fetchUpdateScore = createAsyncThunk<
     IUpdateScore,
     { rejectValue: MyKnownError }
 >('minigames/fetchUpdateScore', async (gameinfo, thunkApi) => {
-    const response = await axios.post('http://localhost:8000/api/users/updatescore', gameinfo );
+    const response = await API.post('users/updatescore', gameinfo );
     if (response.status === 500) {
         return thunkApi.rejectWithValue((await response.data) as MyKnownError);
     } else {

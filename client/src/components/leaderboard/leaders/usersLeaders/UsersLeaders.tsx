@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { cupOne, cupTwo, cupThree } from '../../../../assets/img/svgIcons';
 import Button from '../../../../assets/uikit/Button';
 import { useAppSelector } from '../../../../hooks';
-import { getLeaderBoard } from '../../../../redux/ducks/leaderboard/selectors';
 import { ILeaderBoard } from '../../../../redux/ducks/leaderboard/interfaces';
 import axios from 'axios';
 

@@ -61,10 +61,9 @@ const Minigame = styled.div`
     background-color: #63636399;
     margin: 0 auto;
     border: 5px solid #CEB7FF;   
-`
+
     padding: 6px 23px;
     z-index: 1;
-    margin: 0 auto;
     border-radius: 25px;
 `;
 const MiniFrame = styled.img`
