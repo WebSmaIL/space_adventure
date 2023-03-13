@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { UsersSlice, UserInfoSlice, PlanetsSlice, MiniGameSlice } from './ducks';
+import { UsersSlice, UserInfoSlice, PlanetsSlice, MiniGameSlice, LeaderBoardSlise } from './ducks';
 import storage from 'redux-persist/lib/storage';
 import {
     persistReducer,
@@ -22,6 +22,7 @@ const rootReducer = combineReducers({
     UsersSlice,
     UserInfoSlice,
     PlanetsSlice,
+    LeaderBoardSlise
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

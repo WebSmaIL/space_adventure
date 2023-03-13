@@ -8,6 +8,11 @@ import {
 } from '../../database';
 import { toObject, toNumber } from '../../helpers';
 
+interface Leader {
+    id: number,
+    user_id: string,
+    score: number
+}
 class LeaderBoardController {
     async getLeaderBoard(req: Request, res: Response, tableName: string) {
         try {
@@ -31,56 +36,15 @@ class LeaderBoardController {
         }
     }
 
-    async getUserPresenceById(req: Request, res: Response, tableName: string) {
+    async getLeaderBoardEase(req: Request, res: Response) {
         try {
-            const { id } = req.params;
-            if (!id.split(':')[1]) throw Error();
+            const { table } = req.params;
 
-            query(GET_BY_ID(tableName), [id.split(':')[1]]).then(
-                (result) => {
-                    const isPresence = !!toObject(result)[0];
-                    res.send({
-                        isPresence,
-                        score: isPresence
-                            ? JSON.parse(JSON.stringify(result))[0].score
-                            : null,
-                    }).status(200);
-                }
-            );
+            query(`SELECT * FROM ${table.split(":")[1]} ORDER BY score DESC LIMIT 5`, []).then((result) => {
+                res.status(200).json(JSON.parse(JSON.stringify(result)))
+            })
         } catch (error) {
             res.status(500).json('Incorrect request');
-        }
-    }
-
-    async addUser(req: Request, res: Response, tableName: string) {
-        try {
-            const { user_id, score } = req.body;
-            query(ADD_LEADER(tableName), [user_id, score])
-                .then((result) => {
-                    res.status(200).json({ message: 'User was added' });
-                })
-                .catch((error) =>
-                    res.status(500).json({ message: 'User already exists' })
-                );
-        } catch (error) {
-            res.status(500).json({ message: 'Incorrect request' });
-        }
-    }
-
-    async updateUser(req: Request, res: Response, tableName: string) {
-        try {
-            const { user_id, score } = req.body;
-            query(UPDATE_LEADER(tableName), [score, user_id]).then((result) => {
-                try {
-                    if (!toObject(result)[6]) throw Error();
-
-                    res.status(200).json({ message: 'User was updated' });
-                } catch (error) {
-                    res.status(500).json({ message: 'User is undefined' });
-                }
-            });
-        } catch (error) {
-            res.status(500).json({ message: 'Incorrect request' });
         }
     }
 }

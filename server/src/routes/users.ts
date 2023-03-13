@@ -1,5 +1,6 @@
 import express, { Response, Request } from 'express';
 import { UsersController } from '../controllers/Users';
+import { MinigameController } from '../controllers/Minigame'
 
 const router = express.Router();
 
@@ -37,6 +38,14 @@ router.put('/users/update_email', (req: Request, res: Response) =>
 
 router.post('/users/upload', (req: Request, res: Response) =>
     UsersController.addUserAvatar(req, res)
+);
+
+router.post('/users/coinsupdate', (req: Request, res: Response) =>
+    MinigameController.updateCoins(req, res)
+);
+
+router.post('/users/updatescore', (req: Request, res: Response) =>
+    MinigameController.updateScore(req, res)
 );
 
 export default router;

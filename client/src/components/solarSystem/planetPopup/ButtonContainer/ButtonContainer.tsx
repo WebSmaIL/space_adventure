@@ -2,11 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ButtonContainer = () => {
+
+interface IProps {
+    minigame_id: number | undefined;
+    usersleader_id: string | undefined;
+}
+
+const ButtonContainer = ({minigame_id, usersleader_id}: IProps) => {
     return (
         <Buttons>
-            <Button to="/minigame">Играть</Button>
-            <Button to="/">Таблица лидеров</Button>
+            <Button to={'/minigame'} state={{leader_table: usersleader_id, minigame_id }} >Играть</Button>
+            {/* <Button to={'/leaderboard'} state={{table: usersleader_id }} >Таблица лидеров</Button> */}
         </Buttons>
     );
 };
@@ -17,7 +23,7 @@ const Buttons = styled.div`
     margin-top: 40px;
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
 
     & button:first-child {
         margin-right: 10px;
@@ -36,7 +42,6 @@ const Button = styled(NavLink)`
     display: inline-block;
     padding: 20px 20px;
     
-    margin-top: 10px;
     font-family: inherit;
     font-size: 40px;
     line-height: 1.1;
