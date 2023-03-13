@@ -2,10 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ButtonContainer = () => {
+
+interface IProps {
+    minigame_id: number | undefined;
+}
+
+const ButtonContainer = ({minigame_id}: IProps) => {
     return (
         <Buttons>
-            <Button to="/minigame">Играть</Button>
+            <Button to={minigame_id ? `/minigame/${minigame_id}`: '/minigame'} >Играть</Button>
             <Button to="/">Таблица лидеров</Button>
         </Buttons>
     );
