@@ -1,41 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-    Sun,
-    earth,
-    saturn,
-    mars,
-    moon,
-    uranus,
-    jupiter,
-    neptune,
-    mercury,
-    venus,
-    pluto,
-} from '../../../assets/img/svgIcons';
 import UsersLeaders from './usersLeaders/UsersLeaders';
 
 const Leaders = () => {
+
     return (
         <Div>
             <Span>
                 Таблица лидеров
                 <Hr />
             </Span>
-
-            <PlanetsDiv>
-                <Planet src={Sun} alt="" />
-                <Planet src={earth} alt="" />
-                <Planet src={saturn} alt="" />
-                <Planet src={mars} alt="" />
-                <Planet src={moon} alt="" />
-                <Planet src={uranus} alt="" />
-                <Planet src={jupiter} alt="" />
-                <Planet src={neptune} alt="" />
-                <Planet src={mercury} alt="" />
-                <Planet src={venus} alt="" />
-                <Planet src={pluto} alt="" />
-            </PlanetsDiv>
             <UsersLeaders />
         </Div>
     );

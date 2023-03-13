@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+    IUpdateCoins,
+    IUpdateScore,
     IUploadAvatar,
     IUser,
     IUserLogin,
@@ -7,6 +9,7 @@ import {
     MyKnownError,
 } from './interfaces';
 import { API } from '../../../api';
+import axios from 'axios';
 
 export const fetchRegister = createAsyncThunk<
     IUser,
@@ -57,5 +60,31 @@ export const uploadAvatar = createAsyncThunk<
         return thunkApi.rejectWithValue((await res.data) as MyKnownError);
     } else {
         return await res.data;
+    }
+});
+
+export const fetchUpdateCoins = createAsyncThunk<
+    IUser,
+    IUpdateCoins,
+    { rejectValue: MyKnownError }
+>('minigames/fetchUpdateCoins', async (gameinfo, thunkApi) => {
+    const response = await axios.post('http://localhost:8000/api/users/coinsupdate', gameinfo );
+    if (response.status === 500) {
+        return thunkApi.rejectWithValue((await response.data) as MyKnownError);
+    } else {
+        return await response.data;
+    }
+});
+
+export const fetchUpdateScore = createAsyncThunk<
+    IUser,
+    IUpdateScore,
+    { rejectValue: MyKnownError }
+>('minigames/fetchUpdateScore', async (gameinfo, thunkApi) => {
+    const response = await axios.post('http://localhost:8000/api/users/updatescore', gameinfo );
+    if (response.status === 500) {
+        return thunkApi.rejectWithValue((await response.data) as MyKnownError);
+    } else {
+        return await response.data;
     }
 });
