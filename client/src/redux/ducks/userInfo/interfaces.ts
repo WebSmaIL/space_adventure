@@ -2,6 +2,7 @@ export interface IUser {
     id: string;
     email: string;
     login: string;
+    password: string;
     balance: number;
     level: number;
     avatar_src: string;
@@ -35,4 +36,26 @@ export interface IUserLogin {
 export interface IUploadAvatar {
     img: string;
     id: string;
+}
+export interface IUpUserLogin {
+    login: string;
+    id: string;
+}
+
+export interface IUpUserLevel {
+    id: string;
+    level: number;
+    balance: number;
+    
+}
+
+export interface IUpUserMail {
+    id: string;
+    email: string;
+    
+}
+export interface IUpUserPassword {
+    id: string;
+    password: string;
+    
 }

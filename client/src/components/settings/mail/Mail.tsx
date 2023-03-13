@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { getUserInfo } from '../../../redux/ducks/userInfo';
+import { updateEmail } from '../../../redux/ducks/userInfo/asyncThunk';
 
 
 const Mail = () => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const userInfo = useAppSelector(getUserInfo);
+    const dispatch = useAppDispatch();
+
+ 
+        const handleSaveMail = () => {
+            if (inputRef.current)
+            
+            dispatch(updateEmail({
+                id: userInfo.userInfo.id, email: inputRef.current.value
+                
+            }));
+        };
     return (
         <div>
             <div>
                 <Caption>Смена почты</Caption>
                 <Line></Line>
-                <Input placeholder='Новая почта'></Input>
-                <Button>Сменить почту</Button>
+                <Input ref={inputRef} placeholder='Новая почта'></Input>
+                <Button onClick={handleSaveMail}>Сменить почту</Button>
             </div>
         </div>
     );

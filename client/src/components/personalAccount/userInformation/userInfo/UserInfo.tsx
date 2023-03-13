@@ -14,7 +14,7 @@ const UserInfo = ({setUploadedFile}: IProps) => {
     return (
         <>
             <Container>
-                <Avatar setUploadedFile={setUploadedFile} />
+                <Avatar setUploadedFile={setUploadedFile} />  
                 <ContainerInfo>
                     <UserName>{user.userInfo.login}</UserName>
                     <Level>Уровень - {user.userInfo.level}</Level>

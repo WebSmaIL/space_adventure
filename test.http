@@ -1,2 +1,7 @@
-GET http://localhost:8000/api/users/getbylogin/login:rdas&password:!Sassat102
+PUT http://localhost:8000/api/users/update_login
 Content-Type: application/json
+
+{
+    "id":"b970acdb-e371-4536-927a-962b1c0fead8",
+    "login":"dodiks"
+}

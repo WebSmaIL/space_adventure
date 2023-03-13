@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
+import { getUserInfo } from '../../../redux/ducks/userInfo';
+import { updatePassword } from '../../../redux/ducks/userInfo/asyncThunk';
 
 
 const Password = () => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const userInfo = useAppSelector(getUserInfo);
+    const dispatch = useAppDispatch();
+
+ 
+        const handleSavePassword = () => {
+            if (inputRef.current)
+            
+            dispatch(updatePassword({
+                id: userInfo.userInfo.id, password: inputRef.current.value
+                
+            }));
+        };
     return (
         <div>
             <div>
@@ -10,8 +26,8 @@ const Password = () => {
                 <Line></Line>
                 <Input placeholder='Старый пароль'></Input>
                 <Input placeholder='Новый пароль'></Input>
-                <Input placeholder='Подтвердите новый пароль'></Input>
-                <Button>Сменить пароль</Button>
+                <Input ref={inputRef} placeholder='Подтвердите новый пароль'></Input>
+                <Button onClick={handleSavePassword}>Сменить пароль</Button>
             </div>
         </div>
     );

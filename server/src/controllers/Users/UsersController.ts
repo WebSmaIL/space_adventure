@@ -5,11 +5,13 @@ import {
     GET_ALL,
     GET_BY_ID,
     ADD_USER,
-    UPDATE_USER_LOGIN_PASS,
+    UPDATE_USER_LOGIN,
     UPDATE_USER_BALANCE,
+    UPDATE_USER_PASSWORD,
     UPDATE_USER_EMAIL,
     GET_BY_LOGIN,
     UPDATE_USER_AVATAR,
+    UPDATE_USER_LEVEL,
 } from '../../database/queries';
 import { toObject } from '../../helpers';
 import { v4 as uuidv4 } from 'uuid';
@@ -122,14 +124,30 @@ class UsersController {
         }
     }
 
-    async updateUserLoginPass(req: Request, res: Response, tableName: string) {
+    async updateUserLogin(req: Request, res: Response, tableName: string) {
         try {
-            const { login, password, id } = req.body;
-
-            query(UPDATE_USER_LOGIN_PASS, [login, password, id])
+            const { login, userId } = req.body;
+            query(UPDATE_USER_LOGIN, [login, userId])
                 .then((result) => {
                     res.status(200).json({
-                        message: 'User login and password was updated',
+                        login: login,
+                    });
+                })
+                .catch((error) =>
+                    res.status(500).json({ message: 'User already exists' })
+                );
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
+    async updateUserPassword(req: Request, res: Response, tableName: string) {
+        try {
+            const { password, userId } = req.body;
+            query(UPDATE_USER_PASSWORD, [password, userId])
+                .then((result) => {
+                    res.status(200).json({
+                        password: password,
                     });
                 })
                 .catch((error) =>
@@ -157,12 +175,37 @@ class UsersController {
         }
     }
 
+    async updateUserLevel(req: Request, res: Response, tableName: string) {
+        try {
+            const { level, userId, balance } = req.body;
+            query(UPDATE_USER_LEVEL, [level, balance, userId])
+                .then((result) => {
+                    if(level >= 0 && balance > 100 * level){
+                        query(UPDATE_USER_LEVEL, [level+1, balance-100 * level, userId]).then(
+                            ()=>{res.status(200).json({
+                                level: level+1,
+                                balance: balance-100 * level
+                            });
+                            }
+                        )
+                    }
+                })
+                .catch((error) =>
+                    res.status(500).json({ message: 'User already exists' })
+                );
+        } catch (error) {
+            res.status(500).json('Incorrect request');
+        }
+    }
+
     async updateUserEmail(req: Request, res: Response, tableName: string) {
         try {
-            const { email, id } = req.body;
-            query(UPDATE_USER_EMAIL, [email, id])
+            const { email, userId } = req.body;
+            query(UPDATE_USER_EMAIL, [email, userId])
                 .then((result) => {
-                    res.status(200).json({ message: 'User email was updated' });
+                    res.status(200).json({
+                        email: email,
+                    });
                 })
                 .catch((error) =>
                     res.status(500).json({ message: 'User already exists' })
