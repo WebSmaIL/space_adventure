@@ -46,6 +46,7 @@ const Name = styled.h1`
     color: transparent;
     -webkit-text-stroke: 3px #8E83FF;
     text-shadow: 5px 5px 15px #8E83FF;
+    font-family: 'Bellota';
 `;
 
 const About = styled.h1`
