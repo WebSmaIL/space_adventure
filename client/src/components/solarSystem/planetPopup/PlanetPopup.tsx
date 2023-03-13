@@ -42,7 +42,7 @@ const PlanetPopup = ({ planetId, source, setCurrentPlanet }: IProps) => {
                 <Title>{planetInfo?.name}</Title>
                 <Description planetInfo={planetInfo} source={source} />
                 <Characteristics planetInfo={planetInfo} />
-                <ButtonContainer minigame_id={planetInfo?.minigame_id}/>
+                <ButtonContainer minigame_id={planetInfo?.minigame_id} usersleader_id={planetInfo?.leader_table_name}/>
 
                 <CloseButton onClick={() => setCurrentPlanet(undefined)} />
             </PlanetContainer>

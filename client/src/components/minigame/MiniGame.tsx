@@ -1,20 +1,28 @@
-import { relative } from 'path';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { background_minigame, GameFrame } from '../../assets/img/backgrounds';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { getMiniGameById } from '../../redux/ducks/miniGame/selectors';
+import { fetchUpdateCoins, getUserInfo, fetchUpdateScore } from '../../redux/ducks/userInfo';
 
 const MiniGame = () => {
-    const params = useParams();
-    const id = Number(params.id);
+    const location = useLocation();
+    const { state } = location;
 
-    const miniGame = useAppSelector(getMiniGameById(id));
+    const miniGame = useAppSelector(getMiniGameById(state.minigame_id));
+    const user = useAppSelector(getUserInfo);
+    const dispatch = useAppDispatch()
 
     window.addEventListener(
         'message',
-        (event) => console.log(event.data),
+        (event) => {
+            
+            if (!!event.data.coins) {
+                dispatch(fetchUpdateCoins({userid: user.userInfo.id, coins: event.data.coins}));
+                dispatch(fetchUpdateScore({userid: user.userInfo.id, leadertbl: state.leader_table, score: event.data.score}));
+            }
+        },
         false
     );
 

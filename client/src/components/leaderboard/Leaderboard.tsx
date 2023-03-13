@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { background_leaders } from '../../assets/img/backgrounds';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchLeaders } from '../../redux/ducks/leaderboard/asyncThunk';
+import { getLeaderBoard } from '../../redux/ducks/leaderboard/selectors';
 import Leaders from './leaders/Leaders';
 
 const Leaderboard = () => {
+
+    
+    // const leaders = useAppSelector(getLeaderBoard);
+    
+    // const dispatch = useAppDispatch();
+    // const location = useLocation();
+    // const { state } = location;
+
+    // const tableName = state.table;
+
+    // useEffect(() => {
+    //     dispatch(fetchLeaders({table: tableName}));
+    //     console.log(leaders)
+    // }, [leaders])
+    
+
+    
+
     return (
         <Wrapper>
             <Container>

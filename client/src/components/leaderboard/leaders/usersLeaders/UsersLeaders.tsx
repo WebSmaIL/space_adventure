@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { cupOne, cupTwo, cupThree } from '../../../../assets/img/svgIcons';
-import { IUserLeaders, UserLeaders } from './mookData';
 import Button from '../../../../assets/uikit/Button';
+import { useAppSelector } from '../../../../hooks';
+import { getLeaderBoard } from '../../../../redux/ducks/leaderboard/selectors';
+import { ILeaderBoard } from '../../../../redux/ducks/leaderboard/interfaces';
+import axios from 'axios';
+
+// let count: number;
+
 const UsersLeaders = () => {
+    const [leaders, setLeaders] = useState<ILeaderBoard[] | undefined>(undefined)
+
+
     let count = 1;
     return (
         <>
             <Div>
                 <div>
-                    {UserLeaders.map((e: IUserLeaders) => {
+                    {leaders && leaders.map((e: ILeaderBoard) => {
                         let Component;
                         switch (count) {
                             case 1:
@@ -21,7 +30,7 @@ const UsersLeaders = () => {
                                         }
                                     >
                                         <CubOne src={cupOne} alt="" />
-                                        <UserName>{e.username}</UserName>
+                                        <UserName>{e.login}</UserName>
                                         <RatingUser
                                             outline={
                                                 '8px solid rgba(173, 136, 86, 1)'
@@ -41,7 +50,7 @@ const UsersLeaders = () => {
                                         }
                                     >
                                         <CubOne src={cupTwo} alt="" />
-                                        <UserName>{e.username}</UserName>
+                                        <UserName>{e.login}</UserName>
                                         <RatingUser
                                             outline={
                                                 '8px solid rgba(201, 224, 245, 1)'
@@ -61,7 +70,7 @@ const UsersLeaders = () => {
                                         }
                                     >
                                         <CubOne src={cupThree} alt="" />
-                                        <UserName>{e.username}</UserName>
+                                        <UserName>{e.login}</UserName>
                                         <RatingUser
                                             outline={
                                                 '8px solid rgba(100, 68, 49, 1)'
@@ -82,7 +91,7 @@ const UsersLeaders = () => {
                                         }
                                     >
                                         <PlaceNext>{count}</PlaceNext>
-                                        <UserName>{e.username}</UserName>
+                                        <UserName>{e.login}</UserName>
                                         <RatingUser
                                             outline={
                                                 '8px solid rgba(206, 183, 255, 1)'
@@ -99,7 +108,7 @@ const UsersLeaders = () => {
                     })}
                 </div>
             </Div>
-            <Button text="Еще..." />
+            {/* <Button text="Еще..." /> */}
         </>
     );
 };

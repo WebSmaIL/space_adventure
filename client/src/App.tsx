@@ -15,7 +15,6 @@ import MiniGame from './components/minigame/MiniGame';
 const App = () => {
     const user = useAppSelector(getUserInfo);
     
-
     return (
         <>
             {user.userInfo.isAuthorize && (
@@ -32,11 +31,11 @@ const App = () => {
                     <>
                         <Route path="/profile" element={<PersonalAccount />} />
                         <Route path="/profile/settings" element={<Settings />} />
-                        <Route path="/minigame/:id" element={<MiniGame />} />
-                        <Route
-                            path="/leaderboard/:table"
+                        <Route path="/minigame" element={<MiniGame />} />
+                        {/* <Route
+                            path="/leaderboard"
                             element={<Leaderboard />}
-                        />
+                        /> */}
                     </> 
                 )}
             </Routes>

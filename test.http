@@ -1,2 +1,9 @@
-GET http://localhost:8000/api/users/getbylogin/login:rdas&password:!Sassat102
+POST http://localhost:8000//api/minigame
 Content-Type: application/json
+
+{
+    "userid": "b970acdb-e371-4536-927a-962b1c0fead8",
+    "coins" : 32,
+    "score" : 1000,
+    "leadertbl": "venus_leaders"
+}

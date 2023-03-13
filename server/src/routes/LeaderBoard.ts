@@ -10,18 +10,8 @@ table_names.forEach((el) => {
     router.get(url + '/:page', (req: Request, res: Response) =>
         LeaderBoardController.getLeaderBoard(req, res, el)
     );
-
-    router.get(url + '/user/:id', (req: Request, res: Response) =>
-        LeaderBoardController.getUserPresenceById(req, res, el)
-    );
-
-    router.post(url, (req: Request, res: Response) =>
-        LeaderBoardController.addUser(req, res, el)
-    );
-
-    router.put(url, (req: Request, res: Response) =>
-        LeaderBoardController.updateUser(req, res, el)
-    );
 });
+
+router.get('/leaders/:table', (req: Request, res: Response) => LeaderBoardController.getLeaderBoardEase(req, res))
 
 export default router;
