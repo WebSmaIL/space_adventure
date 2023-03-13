@@ -9,7 +9,7 @@ const Login = () => {
                 <Caption>Сменить Логин</Caption>
                 <Line></Line>
                 <Input placeholder='Новый логин'></Input>
-                <Button>Сменить</Button>
+                <Button>Сменить Логин</Button>
             </div>
         </div>
     );

@@ -82,4 +82,5 @@ const UserBalance = styled.span`
     font-size: 28px;
     color: rgba(170, 130, 255, 1);
     top: 55px;
+    font-family: 'Bellota';
 `;

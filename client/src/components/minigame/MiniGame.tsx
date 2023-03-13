@@ -58,6 +58,10 @@ const Minigame = styled.div`
     width: 1100px;
     min-height: 640px;
     position: relative;
+    background-color: #63636399;
+    margin: 0 auto;
+    border: 5px solid #CEB7FF;   
+`
     padding: 6px 23px;
     z-index: 1;
     margin: 0 auto;

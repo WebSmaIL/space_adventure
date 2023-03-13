@@ -94,7 +94,7 @@ const Name = styled.h3`
 `;
 const UserBalance = styled.span`
     display: block;
-
+    font-family: 'Bellota';
     width: max-content;
     font-size: 20px;
 

@@ -81,7 +81,6 @@ body {
     background: #000;
     color: #fff;
     font-weight: 600;
-    font-family: 'Bellota';
 }
 
 
@@ -119,7 +118,7 @@ dd {
 
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-    font-family: 'Bellota', sans-serif;
+    font-family: sans-serif;
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
