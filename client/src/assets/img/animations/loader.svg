@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="no"?>
+<svg id="Логобез bakcground" width="2300" height="2300" viewBox="0 0 2300 2300" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; max-height: 100%;">
+<g clip-path="url(#clip0_307_2)">
+<circle cx="1096.5" cy="1185.5" r="581.5" fill="url(#paint0_linear_307_2)" stroke-dasharray="0,0,0,3653.30322265625"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,3653.30322265625; 
+          0,1826.651611328125,1826.651611328125,0; 
+          3653.30322265625,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></circle>
+<path d="M1402 690.501C1487.85 826.365 1293.99 928.448 1022.5 1100C751.004 1271.55 739 1272.5 550 1382.5C491.5 1252 470 939.5 750 718.498C954 568.5 1226 572.999 1402 690.501Z" fill="url(#paint1_linear_307_2)" stroke-dasharray="0,0,0,2599.337158203125"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,2599.337158203125; 
+          0,1299.6685791015625,1299.6685791015625,0; 
+          2599.337158203125,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<path d="M330.25 1393.57C-638.25 2268.08 1553.25 1393.58 1553.25 1393.58" stroke="url(#paint2_linear_307_2)" stroke-width="70" stroke-linecap="round" stroke-dasharray="0,0,0,1975.3857421875"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,1975.3857421875; 
+          0,987.69287109375,987.69287109375,0; 
+          1975.3857421875,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<path d="M1577.44 408.958C2820.69 12.623 1574.97 992.045 961.548 1465.56" stroke="url(#paint3_linear_307_2)" stroke-width="70" stroke-linecap="round" stroke-dasharray="0,0,0,2171.6796875"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,2171.6796875; 
+          0,1085.83984375,1085.83984375,0; 
+          2171.6796875,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<path d="M494.253 1970.5C972.934 1936.01 1510.07 1633.53 2036.5 1130.71" stroke="url(#paint4_linear_307_2)" stroke-width="20" stroke-linecap="round" stroke-dasharray="0,0,0,1789.199462890625"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,1789.199462890625; 
+          0,894.5997314453125,894.5997314453125,0; 
+          1789.199462890625,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<path d="M0 1521.28C599.031 1412.93 1310.19 1003.65 2037.67 377.449" stroke="url(#paint5_linear_307_2)" stroke-width="20" stroke-linecap="round" stroke-dasharray="0,0,0,2361.962158203125"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,2361.962158203125; 
+          0,1180.9810791015625,1180.9810791015625,0; 
+          2361.962158203125,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+</g>
+<defs>
+<linearGradient id="paint0_linear_307_2" x1="820" y1="692.5" x2="1298.5" y2="1695.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFDB82"></stop>
+<stop offset="0.597223" stop-color="#FFA122"></stop>
+<stop offset="1" stop-color="#941E0A"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_307_2" x1="767.137" y1="705.956" x2="1018.23" y2="1103.33" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFDB82"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_307_2" x1="106.5" y1="1761" x2="1290" y2="1578.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5F2EE"></stop>
+<stop offset="1" stop-color="#F5F2EE" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint3_linear_307_2" x1="2095.91" y1="350.158" x2="1320.11" y2="1355.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5F2EE"></stop>
+<stop offset="1" stop-color="#F5F2EE" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint4_linear_307_2" x1="494" y1="1965" x2="2055" y2="1125" gradientUnits="userSpaceOnUse">
+<stop offset="0.128465" stop-color="#FA8D23" stop-opacity="0"></stop>
+<stop offset="0.500551" stop-color="#FA8D23"></stop>
+<stop offset="0.862853" stop-color="#FA8D23" stop-opacity="0"></stop>
+</linearGradient>
+<linearGradient id="paint5_linear_307_2" x1="0.498137" y1="1515.32" x2="2096.9" y2="437.391" gradientUnits="userSpaceOnUse">
+<stop offset="0.128465" stop-color="#FA8D23" stop-opacity="0"></stop>
+<stop offset="0.500551" stop-color="#B93D07"></stop>
+<stop offset="0.862853" stop-color="#FA8D23" stop-opacity="0"></stop>
+</linearGradient>
+<clipPath id="clip0_307_2">
+<rect width="2300" height="2300" fill="white" stroke-dasharray="0,0,0,9200"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.5s" values="0,0,0,9200; 
+          0,4600,4600,0; 
+          9200,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></rect>
+</clipPath>
+</defs>
+<setting>{"type":"direct","speed":20,"random":1,"shift":1,"size":1,"rupture":50}</setting></svg>

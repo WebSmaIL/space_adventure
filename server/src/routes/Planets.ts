@@ -1,9 +1,14 @@
 import express, { Response, Request } from 'express';
-import { PlanetsController } from '../controllers/Planets'
+import { PlanetsController } from '../controllers/Planets';
+
 const router = express.Router();
 
-router.get('/planets', PlanetsController.getPlanets)
+router.get('/planets', (req: Request, res: Response) =>
+    PlanetsController.getPlanets(req, res, 'planets')
+);
 
-router.get('/planets/:id' , PlanetsController.getPlanetById)
+router.get('/planets/:id', (req: Request, res: Response) =>
+    PlanetsController.getPlanetById(req, res, 'planets')
+);
 
 export default router;

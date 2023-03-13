@@ -20,4 +20,5 @@ const StyledBackground = styled.img`
 
     margin: 0;
     width: 100%;
+    
 `;

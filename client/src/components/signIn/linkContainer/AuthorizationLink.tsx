@@ -1,18 +1,25 @@
 import React from 'react';
-import { Link, To } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface IAuthorizationLink {
-    path: To;
     linkText: String;
     text: String;
+    isRegister: boolean;
+    setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AuthorizationLink = ({ linkText, path, text }: IAuthorizationLink) => {
+const AuthorizationLink = ({
+    linkText,
+    text,
+    isRegister,
+    setIsRegister,
+}: IAuthorizationLink) => {
     return (
         <LinkContainer>
             <StyledSpan>{text}</StyledSpan>
-            <StyledLink to={path}>{linkText}</StyledLink>
+            <StyledLink onClick={() => setIsRegister(!isRegister)}>
+                {linkText}
+            </StyledLink>
         </LinkContainer>
     );
 };
@@ -32,7 +39,8 @@ const StyledSpan = styled.span`
     color: rgba(255, 255, 255, 0.6);
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
+    cursor: pointer;
     margin-left: 20px;
     color: rgba(142, 131, 255, 1);
 `;

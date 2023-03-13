@@ -11,8 +11,21 @@ export {default as uranus} from './uranus.svg';
 export {default as venus} from './venus.svg';
 
 export {default as logo} from './Logo.svg';
-export {default as avatar} from './Avatars.png';
 export {default as coinLogo} from './coinLogo.svg';
 export {default as cupOne} from './cupOne.svg';
 export {default as cupTwo} from './cupTwo.svg';
 export {default as cupThree} from './cupThree.svg';
+export {default as unknow_planet} from './unknow_planet.svg';
+export {default as close} from './close.svg'
+export {default as IconsTelegram} from './Telegram.svg'
+export {default as IconsGithub} from './Github.svg'
+export {default as IconsDribbble} from './Dribbble.svg'
+export {default as spaceX} from './SpaceX.svg'
+export {default as circle} from './circle.svg'
+export {default as profile_icon} from './profile_icon.svg'
+export {default as settings_header_icon} from './settings_header_icon.svg'
+export {default as exit_icon} from './exit_icon.svg'
+export {default as edit_icon} from './edit_icon.svg'
+
+export {default as plus_icon} from './plus_icon.svg'
+export {default as minus_icon} from './minus_icon.svg'

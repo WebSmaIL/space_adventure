@@ -1,9 +1,14 @@
-import express from 'express';
+import express, { Response, Request } from 'express';
 import { SpaceShips } from '../controllers/SpaceShips';
+
 const router = express.Router();
 
-router.get('/spaceships', SpaceShips.getSpaceShips);
+router.get('/spaceships', (req: Request, res: Response) =>
+    SpaceShips.getSpaceShips(req, res, 'spaceships')
+);
 
-router.get('/spaceships/:id', SpaceShips.getSpaceShipsById);
+router.get('/spaceships/:id', (req: Request, res: Response) =>
+    SpaceShips.getSpaceShipsById(req, res, 'spaceships')
+);
 
 export default router;
